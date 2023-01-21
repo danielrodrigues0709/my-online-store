@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../interfaces/product';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,13 +21,13 @@ export class ProductsService {
     return this.http.delete(this.apiUrl + id);
   }
 
-  updateProduct(product: Product, id: number): Observable<any> {
+  updateProduct(product: any, id: number): Observable<any> {
     return this.http.patch(this.apiUrl + id, {
       product
     });
   }
 
-  saveProduct(product: Product): Observable<any> {
+  saveProduct(product: any): Observable<any> {
     return this.http.post(this.apiUrl, {
       product
     });

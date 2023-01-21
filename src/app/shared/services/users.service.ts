@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +21,13 @@ export class UsersService {
     return this.http.delete(this.apiUrl + id);
   }
 
-  updateUser(user: User, id: number): Observable<any> {
+  updateUser(user: any, id: number): Observable<any> {
     return this.http.patch(this.apiUrl + id, {
       user
     });
   }
 
-  saveUser(user: User): Observable<any> {
+  saveUser(user: any): Observable<any> {
     return this.http.post(this.apiUrl, {
       user
     });

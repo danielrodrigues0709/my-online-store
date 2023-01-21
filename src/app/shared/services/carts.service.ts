@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Cart } from '../interfaces/cart';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +21,13 @@ export class CartsService {
     return this.http.delete(this.apiUrl + id);
   }
 
-  updateCart(cart: Cart, id: number): Observable<any> {
+  updateCart(cart: any, id: number): Observable<any> {
     return this.http.patch(this.apiUrl + id, {
       cart
     });
   }
 
-  saveCart(cart: Cart): Observable<any> {
+  saveCart(cart: any): Observable<any> {
     return this.http.post(this.apiUrl, {
       cart
     });
