@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ProdutDetailComponent } from './produt-detail/produt-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product-detail', pathMatch: 'full' },
@@ -16,6 +20,10 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
+    CardModule,
+    ProgressSpinnerModule,
+    ButtonModule,
+    RatingModule,
     CommonModule
   ]
 })

@@ -1,0 +1,44 @@
+.btn-nav {
+    background-color: darkgrey !important;
+    border: none;
+}
+
+.spinner {
+    height: 80vh;
+}
+
+.product-info {
+    display: flex;
+    margin: 2vw;
+    width: 96vw;
+}
+
+.img-rvw {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .img {
+        max-width: 300px;
+        max-height: 350px;
+        padding: 20px;
+    }
+}
+.qtt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.input {
+    width: 100px;
+}
+
+.btn-cart {
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #3B82F6;
+    color: white;
+    height: 30px;
+}

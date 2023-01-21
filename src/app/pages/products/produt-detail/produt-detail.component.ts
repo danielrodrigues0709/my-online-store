@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ProductsService } from 'src/app/shared/services/products.service';
 
@@ -15,7 +15,11 @@ export class ProdutDetailComponent implements OnInit {
   form!: FormGroup;
   product!: Product;
 
-  constructor(private route: ActivatedRoute, private productService: ProductsService) {
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductsService,
+    private router: Router,
+    ) {
     this.createForm();
     this.id = this.route.snapshot.params['id'];
   }
@@ -23,13 +27,19 @@ export class ProdutDetailComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts(this.id).subscribe(res => {
       this.product = res;
+      this.form.get('rating')?.patchValue(this.product.rating.rate);
     })
   }
 
   createForm(): void {
     this.form = new FormGroup({
-      firstName: new FormControl()
-  });
+      quantity: new FormControl(),
+      rating: new FormControl()
+    });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/home']);
   }
 
 }

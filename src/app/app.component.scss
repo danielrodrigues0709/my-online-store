@@ -1,3 +1,6 @@
+router-outlet {
+    overflow-y: auto !important;
+}
 app-footer {
     position: fixed !important;
     bottom: 0 !important;

@@ -1,4 +1,4 @@
-<div class="home-nav-bar"></div>
+<div class="nav-bar"></div>
 <p-tabView>
     <p-tabPanel header="Home" [selected]="true">
         <ng-template pTemplate="item" let-item let-i="0">
@@ -17,8 +17,8 @@
                     </p-card>
                 </ng-template>
             </p-carousel>
-            <div class="spinner">
-                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            <div class="spinner" *ngIf="products.length == 0">
+                <p-progressSpinner></p-progressSpinner>
             </div>
         </ng-template>
     </p-tabPanel>
@@ -35,8 +35,8 @@
                     <h3 class="price">{{jw.price | currency}}</h3>
                 </p-card>
             </div>
-            <div class="spinner" *ngIf="jewelery">
-                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            <div class="spinner" *ngIf="jewelery.length == 0">
+                <p-progressSpinner></p-progressSpinner>
             </div>
         </div>
     </p-tabPanel>
@@ -53,8 +53,8 @@
                     <h3 class="price">{{mc.price | currency}}</h3>
                 </p-card>
             </div>
-            <div class="spinner" *ngIf="mensClothing">
-                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            <div class="spinner" *ngIf="mensClothing.length == 0">
+                <p-progressSpinner></p-progressSpinner>
             </div>
         </div>
     </p-tabPanel>
@@ -71,8 +71,8 @@
                     <h3 class="price">{{wc.price | currency}}</h3>
                 </p-card>
             </div>
-            <div class="spinner" *ngIf="womensClothing">
-                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            <div class="spinner" *ngIf="womensClothing.length == 0">
+                <p-progressSpinner></p-progressSpinner>
             </div>
         </div>
     </p-tabPanel>
