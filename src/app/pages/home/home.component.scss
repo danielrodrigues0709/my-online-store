@@ -1,0 +1,57 @@
+.home-nav-bar {
+    background-color: darkgrey;
+    height: 50px;
+}
+
+::ng-deep .p-carousel-item {
+    margin: 5px;
+    height: 50vh;
+
+    .price {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+::ng-deep .p-card .p-card-title {
+    font-size: 1rem !important;
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    height: 20vh;
+}
+
+::ng-deep .p-card-body {
+    height: 50vh;
+
+    .img {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        height: 20vh;
+    }
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.category-card ::ng-deep .p-card-body {
+    .img {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        height: 20vh;
+        max-width: 100%;
+    }
+
+    .price {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
