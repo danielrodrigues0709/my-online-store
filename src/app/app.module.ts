@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {CarouselModule} from 'primeng/carousel';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { BrowserModule } from '@angular/platform-browser';
     CarouselModule,
     TabViewModule,
     CardModule,
+    ProgressSpinnerModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

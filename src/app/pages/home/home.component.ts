@@ -3,6 +3,7 @@ import { forkJoin } from 'rxjs';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import {MenuItem} from 'primeng/api';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,7 +18,10 @@ export class HomeComponent implements OnInit {
 
   items!: MenuItem[];
 
-  constructor(private _productsService: ProductsService) { }
+  constructor(
+    private _productsService: ProductsService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     let jewelery$ = this._productsService.getProducts("category/jewelery");
@@ -37,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSelectProduct(event: any): void {
-    console.log(event)
+    this.router.navigate(['products/product-detail/', event.id]);
   }
 
 }
