@@ -1,0 +1,17 @@
+app-footer {
+    position: fixed !important;
+    bottom: 0 !important;
+}
+
+:host ::ng-deep .p-tabview-nav {
+    background-color: darkgrey !important;
+    & li a {
+        color: white !important;
+        background-color: darkgrey !important;
+    }
+    & li.p-highlight a {
+        color: white !important;
+        background-color: grey !important;
+        box-shadow: none !important;
+    }
+}

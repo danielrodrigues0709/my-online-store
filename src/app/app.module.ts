@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {CarouselModule} from 'primeng/carousel';
+import {TabViewModule} from 'primeng/tabview';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { UserComponent } from './pages/user/user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule,
+    TabViewModule,
+    SharedModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
