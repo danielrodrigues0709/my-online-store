@@ -11,7 +11,6 @@ import { UserComponent } from './pages/user/user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
@@ -30,7 +29,6 @@ import { BrowserModule } from '@angular/platform-browser';
     CarouselModule,
     TabViewModule,
     CardModule,
-    SharedModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
