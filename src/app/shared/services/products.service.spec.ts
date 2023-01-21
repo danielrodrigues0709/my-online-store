@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { toArray } from 'rxjs';
+import { productsList } from 'src/app/mocks/productsList';
 
 import { ProductsService } from './products.service';
 
@@ -22,17 +23,13 @@ describe('ProductsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return all products', inject([ProductsService], async(productsService: ProductsService) => {
-    let array = [];
-    await productsService.getProducts().subscribe(res => {
-      res.forEach((element: any) => {
-        array.push(element)
+  it('should return all products', (done) => {
+    service.getProducts().subscribe((res: any) => {
+      expect(res.length).toBeGreaterThan(7);
+      done();
       });
-      expect(array.length).toBeGreaterThan(700);
-    })
     
-    
-    // const url = service.apiUrl;
-    // const http = httpController.expectOne(service.apiUrl)
-  }));
+    const http = httpController.expectOne(service.apiUrl)
+    http.flush(productsList)
+  });
 });
