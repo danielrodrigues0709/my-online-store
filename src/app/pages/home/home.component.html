@@ -2,7 +2,13 @@
 <p-tabView>
     <p-tabPanel header="Home" [selected]="true">
         <ng-template pTemplate="item" let-item let-i="0">
-            <p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+            <p-carousel
+            [value]="products"
+            [numVisible]="3"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="3000"
+            *ngIf="products.length > 0">
                 <ng-template class="carousel-card" let-product pTemplate="item">
                     <p-card class="card" (click)="onSelectProduct(product)">
                         <img class="img" src="{{product.image}}" alt="img">
@@ -11,12 +17,17 @@
                     </p-card>
                 </ng-template>
             </p-carousel>
+            <div class="spinner">
+                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            </div>
         </ng-template>
     </p-tabPanel>
 
     <p-tabPanel header="Jewelery">
         <div class="row">
-            <div class="category-card col-lg-3 col-md-4 col-6" *ngFor="let jw of jewelery">
+            <div
+            class="category-card col-lg-3 col-md-4 col-6"
+            *ngFor="let jw of jewelery">
                 <p-card class="card" (click)="onSelectProduct(jw)">
                     <img class="img" src="{{jw.image}}" alt="img">
                     <br>
@@ -24,12 +35,17 @@
                     <h3 class="price">{{jw.price | currency}}</h3>
                 </p-card>
             </div>
+            <div class="spinner" *ngIf="jewelery">
+                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            </div>
         </div>
     </p-tabPanel>
 
     <p-tabPanel header="Men's clothing">
         <div class="row">
-            <div class="category-card col-lg-3 col-md-4 col-6" *ngFor="let mc of mensClothing">
+            <div
+            class="category-card col-lg-3 col-md-4 col-6"
+            *ngFor="let mc of mensClothing">
                 <p-card class="card" (click)="onSelectProduct(mc)">
                     <img class="img" src="{{mc.image}}" alt="img">
                     <br>
@@ -37,18 +53,26 @@
                     <h3 class="price">{{mc.price | currency}}</h3>
                 </p-card>
             </div>
+            <div class="spinner" *ngIf="mensClothing">
+                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
+            </div>
         </div>
     </p-tabPanel>
 
     <p-tabPanel header="Women's clothing">
         <div class="row">
-            <div class="category-card col-lg-3 col-md-4 col-6" *ngFor="let wc of womensClothing">
+            <div
+            class="category-card col-lg-3 col-md-4 col-6"
+            *ngFor="let wc of womensClothing">
                 <p-card class="card" (click)="onSelectProduct(wc)">
                     <img class="img" src="{{wc.image}}" alt="img">
                     <br>
                     <h6>{{wc.title}}</h6>
                     <h3 class="price">{{wc.price | currency}}</h3>
                 </p-card>
+            </div>
+            <div class="spinner" *ngIf="womensClothing">
+                <p-progressSpinner *ngIf="products.length == 0"></p-progressSpinner>
             </div>
         </div>
     </p-tabPanel>
