@@ -1,36 +1,36 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../interfaces/product';
 import { environment } from 'src/environments/environment';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class UsersService {
 
-  apiUrl: string = environment.apiUrl + 'products';
+  apiUrl: string = environment.apiUrl + 'users/';
 
   constructor(private http: HttpClient) { }
 
-  getProducts(params?: string): Observable<any> {
+  getUsers(params?: string): Observable<any> {
     params = params ? params : '';
     return this.http.get(this.apiUrl + params);
   }
 
-  deleteProduct(id: number): Observable<any> {
+  deleteUser(id: number): Observable<any> {
     return this.http.delete(this.apiUrl + id);
   }
 
-  updateProduct(product: Product, id: number): Observable<any> {
+  updateUser(user: User, id: number): Observable<any> {
     return this.http.patch(this.apiUrl + id, {
-      product
+      user
     });
   }
 
-  saveProduct(product: Product): Observable<any> {
+  saveUser(user: User): Observable<any> {
     return this.http.post(this.apiUrl, {
-      product
+      user
     });
   }
 }

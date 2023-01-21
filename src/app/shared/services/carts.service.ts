@@ -1,36 +1,36 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../interfaces/product';
 import { environment } from 'src/environments/environment';
+import { Cart } from '../interfaces/cart';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class CartsService {
 
-  apiUrl: string = environment.apiUrl + 'products';
+  apiUrl: string = environment.apiUrl + 'carts/';
 
   constructor(private http: HttpClient) { }
 
-  getProducts(params?: string): Observable<any> {
-    params = params ? params : '';
+  getCarts(params?: string): Observable<any> {
+    params = params ? params : ''; 
     return this.http.get(this.apiUrl + params);
   }
 
-  deleteProduct(id: number): Observable<any> {
+  deleteCart(id: number): Observable<any> {
     return this.http.delete(this.apiUrl + id);
   }
 
-  updateProduct(product: Product, id: number): Observable<any> {
+  updateCart(cart: Cart, id: number): Observable<any> {
     return this.http.patch(this.apiUrl + id, {
-      product
+      cart
     });
   }
 
-  saveProduct(product: Product): Observable<any> {
+  saveCart(cart: Cart): Observable<any> {
     return this.http.post(this.apiUrl, {
-      product
+      cart
     });
   }
 }
