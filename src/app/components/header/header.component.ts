@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { User } from 'src/app/shared/interfaces/user';
 import { CartsService } from 'src/app/shared/services/carts.service';
+import { LoginService } from 'src/app/shared/services/login.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
@@ -15,8 +17,10 @@ export class HeaderComponent implements OnInit {
   items: string = '0';
   cart!: Cart;
   user!: User;
+  isLoggedIn!: boolean;
 
   constructor(
+    private loginService: LoginService,
     private usersService: UsersService,
     private cartService: CartsService,
     private router: Router) { }
@@ -26,7 +30,9 @@ export class HeaderComponent implements OnInit {
       this.cart = res;
       this.items = (this.cart.products.length).toString();
     });
-
+    this.loginService.loginUpdated.subscribe(res => {
+      this.isLoggedIn = res;
+    });
     this.usersService.getUsers('1').subscribe(res => {
       this.user = res;
     })
@@ -34,6 +40,14 @@ export class HeaderComponent implements OnInit {
 
   goHome(): void {
     this.router.navigate(['/home']);
+  }
+
+  signIn(): void {
+    this.router.navigate(['/login']);
+  }
+
+  signOut(): void {
+    this.loginService.setLogin(false);
   }
 
   goToCart(): void {
