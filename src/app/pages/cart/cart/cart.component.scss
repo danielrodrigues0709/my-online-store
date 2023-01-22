@@ -1,0 +1,60 @@
+.btn-nav {
+    background-color: darkgrey !important;
+    border: none;
+}
+
+.empty {
+    width: 100%;
+    text-align: center;
+    color: grey;
+}
+
+.resume {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+
+    .totals {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        height: 40vh;
+    }
+}
+
+.thumbnail {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 20px;
+}
+
+.input {
+    margin: 0 20px;
+    width: 80px;
+}
+
+.coupon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.btn-cp {
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #3B82F6;
+    color: white;
+    height: 30px;
+}
+
+.icon {
+    margin: 20px;
+}
+
+.btn-finalize {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}

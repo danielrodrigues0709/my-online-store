@@ -44,7 +44,11 @@ export class ProdutDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/home']);
+    history.back()
+  }
+
+  proceedToCart(): void {
+    this.router.navigate(['/cart']);
   }
 
   addToCart(value: any): void {

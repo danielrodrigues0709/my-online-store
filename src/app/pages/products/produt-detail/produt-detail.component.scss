@@ -31,11 +31,17 @@
     width: 100%;
 }
 
+.cart {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
 .input {
     width: 100px;
 }
 
-.btn-cart {
+.btn-qtt {
     border: none;
     border-radius: 0 5px 5px 0;
     background-color: #3B82F6;

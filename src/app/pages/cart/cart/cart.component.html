@@ -1,1 +1,34 @@
-<p>cart works!</p>
+<div class="nav-bar">
+    <button pButton pRipple type="button" icon="pi pi-angle-left" class="p-button-rounded btn-nav" (click)="goBack()">Go back</button>
+</div>
+<div class="resume">
+    <div class="col-6">
+        <h3 *ngIf="!products" class="empty">Your cart is empty</h3>
+        <ul *ngFor="let prod of products">
+            <li>
+                <img src="{{prod.product.image}}" alt="img" class="thumbnail">
+                <strong>{{prod.product.title}} - {{prod.product.price | currency}}</strong>
+                <input id="ipt{{prod.product.id}}" type="number" [(ngModel)]="prod.quantity" class="input" min="1">
+                <strong>{{prod.product.price * prod.quantity | currency}}</strong>
+                <i class="icon pi pi-trash" (click)="removeFromCart(prod)"></i>
+            </li>
+        </ul>
+    </div>
+    <div class="col-6">
+        <form [formGroup]="form">
+            <div class="coupon">
+                <input #coupon type="text" formControlName="coupon" placeholder="Insert here your coupon">
+                <button type="button" class="btn-cp" (click)="applyDiscount(coupon)">Apply discount</button>
+            </div>
+        </form>
+        
+        <div class="totals">
+            <h4>Total amount: {{getTotal() | currency}}</h4>
+            <h4>Discount: {{discount | currency}}</h4>
+            <h3>Total with discount: {{totalWithDiscount | currency}}</h3>
+        </div>
+        <div class="btn-finalize">
+            <button pButton pRipple type="button" class="p-button">FINALIZE</button>
+        </div>
+    </div>
+</div>

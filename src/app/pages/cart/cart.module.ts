@@ -5,6 +5,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CartComponent } from './cart/cart.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 const routes: Routes = [
   { path: '', component: CartComponent },
@@ -23,6 +25,9 @@ const routes: Routes = [
   ],
   imports: [
     RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    ButtonModule,
     CommonModule
   ]
 })

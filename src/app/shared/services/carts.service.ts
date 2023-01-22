@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../interfaces/cart';
+import { Observable, of } from 'rxjs';
+import { coupons } from 'src/app/mocks/coupons';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +18,9 @@ export class CartsService {
 
   public setCart(cart: Cart): void {
     this._cart = cart;
+  }
+
+  getCoupons(): Observable<any> {
+    return of(coupons);
   }
 }
