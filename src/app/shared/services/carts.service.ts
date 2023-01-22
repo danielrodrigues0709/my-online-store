@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Cart } from '../interfaces/cart';
 import { Observable, of } from 'rxjs';
 import { coupons } from 'src/app/mocks/coupons';
@@ -7,6 +7,8 @@ import { coupons } from 'src/app/mocks/coupons';
   providedIn: 'root'
 })
 export class CartsService {
+
+  @Output() cartUpdated: EventEmitter<Cart> = new EventEmitter<Cart>()
 
   constructor() { }
 
@@ -18,6 +20,7 @@ export class CartsService {
 
   public setCart(cart: Cart): void {
     this._cart = cart;
+    this.cartUpdated.emit(this._cart);
   }
 
   getCoupons(): Observable<any> {

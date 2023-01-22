@@ -7,6 +7,8 @@ import { CartComponent } from './cart/cart.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
 
 const routes: Routes = [
   { path: '', component: CartComponent },
@@ -28,7 +30,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
+    MessagesModule,
     CommonModule
-  ]
+  ],
+  providers: [MessageService],
 })
 export class CartModule { }

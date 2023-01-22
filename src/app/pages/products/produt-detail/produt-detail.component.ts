@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
@@ -22,7 +23,8 @@ export class ProdutDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductsService,
-    private cartService: CartsService
+    private cartService: CartsService,
+    private messageService: MessageService
     ) {
     this.createForm();
     this.id = this.route.snapshot.params['id'];
@@ -75,6 +77,7 @@ export class ProdutDetailComponent implements OnInit {
       products: products
     };
     this.cartService.setCart(this.cart);
+    this.messageService.add({severity:'success', summary:'Success', detail:'Product added to cart'});
   }
 
 }

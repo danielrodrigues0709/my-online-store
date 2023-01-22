@@ -7,6 +7,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
+import { MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product-detail', pathMatch: 'full' },
@@ -24,7 +26,9 @@ const routes: Routes = [
     ProgressSpinnerModule,
     ButtonModule,
     RatingModule,
+    MessagesModule,
     CommonModule
-  ]
+  ],
+  providers: [MessageService],
 })
 export class ProductsModule { }

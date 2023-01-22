@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { Coupon } from 'src/app/shared/interfaces/coupon';
 import { Product } from 'src/app/shared/interfaces/product';
@@ -22,7 +23,9 @@ export class CartComponent implements OnInit {
   coupon!: Coupon;
   coupons!: Coupon[];
 
-  constructor(private cartService: CartsService) {
+  constructor(
+    private cartService: CartsService,
+    private messageService: MessageService) {
     this.createForm();
   }
 
@@ -38,7 +41,7 @@ export class CartComponent implements OnInit {
     this.products = this.cart?.products;
     this.getTotal();
     this.discount = 0;
-    this.totalWithDiscount = this.total;
+    this.getTotalWithDiscount();
   }
 
   createForm(): void {
@@ -51,15 +54,23 @@ export class CartComponent implements OnInit {
     history.back()
   }
 
+  onChange(): void {
+    if(this.applied) {
+      this.discount = 0;
+      this.applied = false;
+    }
+  }
+
   removeFromCart(product: any): void {
     let item = this.cart.products.find(p => p == product);
     let index = this.cart.products.indexOf(item);
     this.cart.products.splice(index, 1);
+    this.messageService.add({severity:'success', summary:'Success', detail:'Product removed'});
     this.cartService.setCart(this.cart);
     this.getCart();
   }
 
-  getTotal() {
+  getTotal(): number {
     this.total = 0;
     this.cart?.products.forEach(prod => {
       this.total = this.total + prod.product.price * prod.quantity;
@@ -67,12 +78,23 @@ export class CartComponent implements OnInit {
     return this.total;
   }
 
-  applyDiscount(coupon: any) {
+  getTotalWithDiscount(): number {
+    this.totalWithDiscount = this.total - this.discount;
+    return this.totalWithDiscount;
+  }
+
+  applyDiscount(coupon: any): void {
     if(this.applied) return;
     let discount = this.coupons.find(cp => cp.name == coupon.value);
-    this.discount = discount ? this.total*discount.offPercent/100 : 0;
-    this.totalWithDiscount = this.total - this.discount;
-    this.applied = true;
+    if(discount) {
+      this.discount = this.total*discount.offPercent/100
+      this.messageService.add({severity:'success', summary:'Success', detail:'Discount applied'});
+      this.totalWithDiscount = this.total - this.discount;
+      this.applied = true;
+    }
+    else {
+      this.discount = 0;
+    }
   }
 
 }

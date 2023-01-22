@@ -8,7 +8,7 @@
             <li>
                 <img src="{{prod.product.image}}" alt="img" class="thumbnail">
                 <strong>{{prod.product.title}} - {{prod.product.price | currency}}</strong>
-                <input id="ipt{{prod.product.id}}" type="number" [(ngModel)]="prod.quantity" class="input" min="1">
+                <input id="ipt{{prod.product.id}}" type="number" [(ngModel)]="prod.quantity" class="input" min="1" (change)="onChange()">
                 <strong>{{prod.product.price * prod.quantity | currency}}</strong>
                 <i class="icon pi pi-trash" (click)="removeFromCart(prod)"></i>
             </li>
@@ -25,7 +25,7 @@
         <div class="totals">
             <h4>Total amount: {{getTotal() | currency}}</h4>
             <h4>Discount: {{discount | currency}}</h4>
-            <h3>Total with discount: {{totalWithDiscount | currency}}</h3>
+            <h3>Total with discount: {{getTotalWithDiscount() | currency}}</h3>
         </div>
         <div class="btn-finalize">
             <button pButton pRipple type="button" class="p-button">FINALIZE</button>

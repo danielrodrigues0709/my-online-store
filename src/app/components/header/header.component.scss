@@ -1,4 +1,24 @@
 .header {
     background-color: black;
     height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.image {
+    position: fixed;
+    left: 10px;
+    background-color: darkgrey;
+    padding: 5px;
+    width: 200px;
+    border-radius: 8px 8px 0 0;
+}
+
+.avatar {
+    margin-right: 15px;
+}
+
+.cart {
+    top: 3px;
 }

@@ -13,6 +13,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BadgeModule } from 'primeng/badge';
+import { AvatarModule } from 'primeng/avatar';
+import { MessagesModule } from 'primeng/messages';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -30,9 +34,12 @@ import { BrowserModule } from '@angular/platform-browser';
     CarouselModule,
     TabViewModule,
     CardModule,
+    BadgeModule,
+    AvatarModule,
+    MessagesModule,
     ProgressSpinnerModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
