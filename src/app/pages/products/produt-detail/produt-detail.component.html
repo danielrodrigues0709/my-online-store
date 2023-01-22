@@ -7,15 +7,15 @@
 <form [formGroup]="form">
     <div *ngIf="product" class="product-info row">
         <div class="img-rvw col-4">
-            <img src="{{product?.image}}" alt="img" class="img">
+            <img src="{{product.image}}" alt="img" class="img">
             <p-rating formControlName="rating" [readonly]="true" [cancel]="false"></p-rating>
-            <p>{{product?.rating?.count}} reviews</p>
+            <p>{{product.rating.count}} reviews</p>
         </div>
         <div class="col">
-            <h2 class="title">{{product?.title}}</h2>
+            <h2 class="title">{{product.title}}</h2>
             <br>
-            <p>{{product?.description}}</p>
-            <h1>{{product?.price | currency}}</h1>
+            <p>{{product.description}}</p>
+            <h1>{{product.price | currency}}</h1>
             <div class="qtt">
                 <input #qtt type="number" formControlName="quantity" class="input" placeholder="Quantity" min="1">
                 <button type="button" class="btn-qtt" (click)="addToCart(qtt.value)">Add to cart</button>
