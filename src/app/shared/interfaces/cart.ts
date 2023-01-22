@@ -1,9 +1,8 @@
+import { Product } from "./product";
+
 export interface Cart {
     id: number;
     userId: number;
-    date: string,
-    products:[{
-        productId: number,
-        quantity: number
-    }]
+    date: Date,
+    products: any[]
 }

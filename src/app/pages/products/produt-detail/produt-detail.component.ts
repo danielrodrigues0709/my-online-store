@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
 import { ProductsService } from 'src/app/shared/services/products.service';
@@ -15,6 +16,7 @@ export class ProdutDetailComponent implements OnInit {
   id!: string;
   form!: FormGroup;
   product!: Product;
+  cart!: Cart;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +32,8 @@ export class ProdutDetailComponent implements OnInit {
     this.productService.getProducts(this.id).subscribe(res => {
       this.product = res;
       this.form.get('rating')?.patchValue(this.product.rating.rate);
-    })
+    });
+    this.cart = this.cartService.getCart();
   }
 
   createForm(): void {
@@ -44,30 +47,30 @@ export class ProdutDetailComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  // TODO Review cart logic
   addToCart(value: any): void {
-    let userId = 1;
-    let cart = {
-      userId: userId,
-      date: new Date(),
-      products: [{
-        productId: this.product.id,
+    let products: { product: Product; quantity: any; }[] = [];
+    this.cart?.products.forEach(prod => {
+      products.push(prod);
+    });
+
+    let prod = this.cart?.products.find(p => p.product == this.product);
+    if(prod) {
+      prod.quantity = value;
+    }
+    else {
+      products.push({
+        product: this.product,
         quantity: value
-      }]
+      })
+    }
+
+    this.cart = {
+      id: 1,
+      date: new Date(),
+      userId: 1,
+      products: products
     };
-    this.cartService.getCarts(`user/${userId}`).subscribe(res => {
-      if(res.length == 0) {
-        this.cartService.saveCart(cart).subscribe(res => {
-          console.log(res)
-        })
-      }
-      else {
-        console.log(res)
-        this.cartService.updateCart(cart, res[0].id).subscribe(res => {
-          console.log(res)
-        })
-      }
-    })
+    this.cartService.setCart(this.cart);
   }
 
 }
