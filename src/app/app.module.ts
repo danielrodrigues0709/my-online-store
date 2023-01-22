@@ -17,6 +17,10 @@ import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
 import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
+import { LoginComponent } from './pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { MessageService } from 'primeng/api';
     AdminComponent,
     UserComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,9 @@ import { MessageService } from 'primeng/api';
     BadgeModule,
     AvatarModule,
     MessagesModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
     ProgressSpinnerModule,
   ],
   providers: [HttpClient, MessageService],
