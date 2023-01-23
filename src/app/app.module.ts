@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     ButtonModule,
     ProgressSpinnerModule,
   ],
-  providers: [HttpClient, MessageService],
+  providers: [HttpClient, MessageService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

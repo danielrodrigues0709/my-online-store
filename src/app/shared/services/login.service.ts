@@ -22,7 +22,7 @@ export class LoginService {
 
   public setLogin(loggedIn: boolean): void {
     this._isLoggedIn = loggedIn;
-    this.loginUpdated.emit(loggedIn);
+    this.loginUpdated.emit(this._isLoggedIn);
   }
 
   login(login: Login): Observable<any> {

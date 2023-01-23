@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { Coupon } from 'src/app/shared/interfaces/coupon';
@@ -25,7 +26,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartsService,
-    private messageService: MessageService) {
+    private messageService: MessageService,
+    private router: Router) {
     this.createForm();
   }
 
@@ -52,6 +54,15 @@ export class CartComponent implements OnInit {
 
   goBack(): void {
     history.back()
+  }
+
+  canGoBack(): boolean {
+    confirm("Are you sure that you want to leave this page?");
+    return true;
+  }
+
+  goToCheckout(): void {
+    this.router.navigate(['/cart/checkout']);
   }
 
   onChange(): void {

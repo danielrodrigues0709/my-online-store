@@ -28,7 +28,7 @@
             <h3>Total with discount: {{getTotalWithDiscount() | currency}}</h3>
         </div>
         <div class="btn-finalize">
-            <button pButton pRipple type="button" class="p-button">FINALIZE</button>
+            <button pButton pRipple type="button" class="p-button" (click)="goToCheckout()">FINALIZE</button>
         </div>
     </div>
 </div>
