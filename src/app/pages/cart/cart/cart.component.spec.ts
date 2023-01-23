@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MessageService } from 'primeng/api';
 
 import { CartComponent } from './cart.component';
 
@@ -8,7 +10,11 @@ describe('CartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartComponent ]
+      imports: [
+        HttpClientModule,
+      ],
+      declarations: [ CartComponent ],
+      providers: [ MessageService ]
     })
     .compileComponents();
 
@@ -17,7 +23,24 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("show render button", () => {
+    const fixture = TestBed.createComponent(CartComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button')).toBeTruthy();
+  });
+
+  it("show render h4", () => {
+    const fixture = TestBed.createComponent(CartComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h4')).toBeTruthy();
+  });
+
+  it("show render h3", () => {
+    const fixture = TestBed.createComponent(CartComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h3')).toBeTruthy();
   });
 });

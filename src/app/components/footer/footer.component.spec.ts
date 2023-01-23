@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
@@ -8,6 +9,9 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+      ],
       declarations: [ FooterComponent ]
     })
     .compileComponents();
@@ -19,5 +23,19 @@ describe('FooterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it("show render div", () => {
+    const fixture = TestBed.createComponent(FooterComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('div')).toBeTruthy();
+  });
+
+  it("show render br", () => {
+    const fixture = TestBed.createComponent(FooterComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('br')).toBeTruthy();
   });
 });
