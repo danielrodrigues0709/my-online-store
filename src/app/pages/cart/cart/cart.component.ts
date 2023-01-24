@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
       total: this.total,
       discount: this.discount,
       totalWithDiscount: this.totalWithDiscount
-    } }});
+    }}});
   }
 
   onChange(): void {

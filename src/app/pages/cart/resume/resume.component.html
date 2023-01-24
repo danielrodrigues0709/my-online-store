@@ -1,1 +1,26 @@
-<p>resume works!</p>
+<div class="nav-bar">
+    <button pButton pRipple type="button" icon="pi pi-angle-left" class="p-button-rounded btn-nav" (click)="goBack()">Go back</button>
+</div>
+<div class="resume">
+    <div class="col-7">
+        <h3 *ngIf="!products" class="title">Your cart is empty</h3>
+        <h3 *ngIf="products" class="title">Resume</h3>
+        <ul *ngFor="let prod of products">
+            <li>
+                <img src="{{prod.product.image}}" alt="img" class="thumbnail">
+                <strong>{{prod.product.title}} - {{prod.product.price | currency}} - {{prod.quantity}} - {{prod.product.price * prod.quantity | currency}}</strong> 
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-5">
+        <div class="totals">
+            <h4>Total amount: {{values.total | currency}}</h4>
+            <h4>Discount: {{values.discount | currency}}</h4>
+            <h3>Total with discount: {{values.totalWithDiscount | currency}}</h3>
+        </div>
+        <div class="btn-checkout">
+            <button pButton pRipple type="button" class="p-button" (click)="goToCheckout()">Go to Checkout</button>
+        </div>
+    </div>
+</div>
