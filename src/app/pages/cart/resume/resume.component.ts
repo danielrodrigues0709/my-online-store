@@ -45,7 +45,9 @@ export class ResumeComponent implements OnInit {
   }
   
   goToCheckout(): void {
-    
+    this.router.navigate(['/cart/checkout'], {state: { values: {
+      values: this.values
+    }}});
   }
 
 }

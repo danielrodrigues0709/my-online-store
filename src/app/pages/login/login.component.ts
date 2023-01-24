@@ -11,12 +11,17 @@ import { LoginService } from 'src/app/shared/services/login.service';
 export class LoginComponent implements OnInit {
 
   form!: FormGroup;
+  state!: {
+    url: string;
+  }
   
   constructor(
     private router: Router,
     private loginService: LoginService
   ) {
     this.createForm();
+    const nav = this.router.getCurrentNavigation()?.extras.state;
+    this.state = nav ? nav['url'] : undefined;
   }
 
   ngOnInit(): void {
@@ -32,7 +37,12 @@ export class LoginComponent implements OnInit {
   login(): void {
     if (!this.form.valid) return;
     this.loginService.setLogin(true);
-    this.router.navigate(['/home']);
+    if(this.state) {
+      this.router.navigate([this.state]);
+    }
+    else {
+      history.back();
+    }
   }
 
 }
