@@ -2,7 +2,7 @@
     <button pButton pRipple type="button" icon="pi pi-angle-left" class="p-button-rounded btn-nav" (click)="goBack()">Go back</button>
 </div>
 <div class="resume">
-    <div class="col-6">
+    <div class="col-7">
         <h3 *ngIf="!products" class="empty">Your cart is empty</h3>
         <ul *ngFor="let prod of products">
             <li>
@@ -14,7 +14,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-6">
+    <div class="col-5">
         <form [formGroup]="form">
             <div class="coupon">
                 <input #coupon type="text" formControlName="coupon" placeholder="Insert here your coupon">
@@ -27,8 +27,8 @@
             <h4>Discount: {{discount | currency}}</h4>
             <h3>Total with discount: {{getTotalWithDiscount() | currency}}</h3>
         </div>
-        <div class="btn-finalize">
-            <button pButton pRipple type="button" class="p-button" (click)="goToCheckout()">FINALIZE</button>
+        <div class="btn-resume">
+            <button pButton pRipple type="button" class="p-button" (click)="goToResume()">Go to Resume</button>
         </div>
     </div>
 </div>

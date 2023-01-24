@@ -14,7 +14,12 @@ export class CartGuard implements CanDeactivate<CartComponent> {
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-    return component.canGoBack();
+   if(nextState?.url == '/cart/resume' || !component.cart) {
+      return true;
+    }
+    else {
+      return component.canGoBack();
+    }
   }
   
 }

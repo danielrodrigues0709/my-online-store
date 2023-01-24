@@ -57,12 +57,16 @@ export class CartComponent implements OnInit {
   }
 
   canGoBack(): boolean {
-    confirm("Are you sure that you want to leave this page?");
-    return true;
+    let conf = confirm("Are you sure that you want to leave this page?").valueOf();
+    return conf;
   }
 
-  goToCheckout(): void {
-    this.router.navigate(['/cart/checkout']);
+  goToResume(): void {
+    this.router.navigate(['/cart/resume'], {state: { values: {
+      total: this.total,
+      discount: this.discount,
+      totalWithDiscount: this.totalWithDiscount
+    } }});
   }
 
   onChange(): void {
