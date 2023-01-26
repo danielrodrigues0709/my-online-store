@@ -11,12 +11,15 @@ import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
 import { AuthGuard } from 'src/app/shared/guards/auth.guard';
 import { CartGuard } from './cart/cart.guard';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CalendarModule } from 'primeng/calendar';
 
 const routes: Routes = [
-  { path: '', component: CartComponent, canDeactivate: [CartGuard]},
+  { path: '', component: CartComponent, canDeactivate: [CartGuard] },
   { path: 'resume', component: ResumeComponent },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]  },
-  { path: 'confirmation', component: ConfirmationComponent, canActivate: [AuthGuard]  },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'confirmation', component: ConfirmationComponent, canActivate: [AuthGuard] },
   { path: '**', component: CartComponent }
 ];
 
@@ -33,6 +36,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     ButtonModule,
     MessagesModule,
+    InputTextModule,
+    InputNumberModule,
+    CalendarModule,
     CommonModule
   ],
   providers: [MessageService],

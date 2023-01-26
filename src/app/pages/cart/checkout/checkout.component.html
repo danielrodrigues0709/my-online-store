@@ -1,1 +1,75 @@
-<p>checkout works!</p>
+<div class="nav-bar">
+    <button pButton pRipple type="button" icon="pi pi-angle-left" class="p-button-rounded btn-nav" (click)="goBack()">Go back</button>
+</div>
+<div class="resume">
+    <div class="forms">
+        <div class="p-fluid grid formgrid">
+            <h3>Adress Information</h3>
+            <form [formGroup]="adressForm">
+                <div class="row">
+                    <div class="field col-8">
+                        <label for="adress">Adress</label>
+                        <input #adress pInputText class="p-inputtext-sm" type="text" formControlName="adress">
+                    </div>
+                    <div class="field col-4">
+                        <label for="number">Number</label>
+                        <input #number pInputText class="p-inputtext-sm" type="text" formControlName="number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field col-3">
+                        <label for="city">City</label>
+                        <input #city pInputText class="p-inputtext-sm" type="text" formControlName="city">
+                    </div>
+                    <div class="field col-3">
+                        <label for="state">State</label>
+                        <input #state pInputText class="p-inputtext-sm" type="text" formControlName="state">
+                    </div>
+                    <div class="field col-3">
+                        <label for="country">Country</label>
+                        <input #country pInputText class="p-inputtext-sm" type="text" formControlName="country">
+                    </div>
+                    <div class="col">
+                        <label for="zip_code">Zip Code</label>
+                        <input #zip_code pInputText class="p-inputtext-sm" type="text" formControlName="zip_code">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="p-fluid grid formgrid">
+            <h3>Payment Information</h3>
+            <form [formGroup]="paymentForm">
+                <div class="row">
+                    <div class="field col-7">
+                        <label for="name">Name on Card</label>
+                        <input #name pInputText class="p-inputtext-sm" type="text" formControlName="name">
+                    </div>
+                    <div class="field col-5">
+                        <label for="expiry_date">Expiry Date</label>
+                        <p-calendar [showIcon]="true" inputId="icon" formControlName="expiry_date"></p-calendar>
+                    </div>
+                    <div class="field col-7">
+                        <label for="number">Card Number</label>
+                        <input #number pInputText class="p-inputtext-sm" type="text" formControlName="number">
+                    </div>
+                    <div class="field col-5">
+                        <label for="cvv">CVV</label>
+                        <input #cvv pInputText class="p-inputtext-sm" type="text" formControlName="cvv">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="values">
+        <div class="totals">
+            <h4>Total amount: {{values.total | currency}}</h4>
+            <h4>Discount: {{values.discount | currency}}</h4>
+            <h3>Total with discount: {{values.totalWithDiscount | currency}}</h3>
+        </div>
+        <div class="btn-checkout">
+            <button pButton pRipple type="button" class="p-button" (click)="submit()">Confirm and Finalize</button>
+        </div>
+    </div>
+</div>
