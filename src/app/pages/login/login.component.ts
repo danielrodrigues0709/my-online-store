@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/shared/services/login.service';
 
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private formBuilder: FormBuilder
   ) {
     this.createForm();
     const nav = this.router.getCurrentNavigation()?.extras.state;
@@ -28,9 +29,9 @@ export class LoginComponent implements OnInit {
   }
 
   createForm(): void {
-    this.form = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl(),
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 

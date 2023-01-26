@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
@@ -27,7 +27,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartsService,
     private messageService: MessageService,
-    private router: Router) {
+    private router: Router,
+    private formBuilder: FormBuilder) {
     this.createForm();
   }
 
@@ -47,8 +48,8 @@ export class CartComponent implements OnInit {
   }
 
   createForm(): void {
-    this.form = new FormGroup({
-      coupon: new FormControl(),
+    this.form = this.formBuilder.group({
+      coupon: [''],
     });
   }
 

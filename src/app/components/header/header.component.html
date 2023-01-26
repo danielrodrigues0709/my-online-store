@@ -6,7 +6,7 @@
         <i class="cart pi pi-shopping-cart mr-4 p-text-secondary" pBadge style="font-size: 1.5rem" [value]="items" (click)="goToCart()"></i>
         <p-avatar icon="pi pi-user" shape="circle" class="avatar" (click)="myAccount()"></p-avatar>
         <div *ngIf="isLoggedIn">
-            <h4 class="userName">{{user.name.firstname}}</h4>
+            <h4 class="userName">{{user?.name?.firstname}}</h4>
         </div>
         <div *ngIf="isLoggedIn" class="signout">
             <i class="pi pi-sign-out mr-4 p-text-secondary" style="font-size: 1.5rem" (click)="signOut()"></i>

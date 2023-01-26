@@ -3,11 +3,11 @@
         <div class="form">
             <div class="input">
                 <label for="username">Username</label>
-                <input #username pInputText type="text" formControlName="username" required>
+                <input #username pInputText type="text" formControlName="username">
             </div>
             <div class="input">
                 <label for="password">Password</label>
-                <input #password pInputText type="password" formControlName="password" required>
+                <input #password pInputText type="password" formControlName="password">
                 <a [routerLink]="['/login']">Forgot password?</a>
             </div>
             <div class="btn">
