@@ -11,7 +11,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BadgeModule } from 'primeng/badge';
@@ -24,6 +24,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { HttpInterceptorService } from './shared/interceptors/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,9 @@ import { AuthGuard } from './shared/guards/auth.guard';
     ButtonModule,
     ProgressSpinnerModule,
   ],
-  providers: [HttpClient, MessageService, AuthGuard],
+  providers: [HttpClient, MessageService, AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

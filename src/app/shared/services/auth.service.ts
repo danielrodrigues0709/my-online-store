@@ -13,6 +13,7 @@ export class AuthService {
   constructor() { }
 
   getUserData(login: Login): any {
+    login.expiresInMins = 60;
     fetch(this.authUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -28,7 +29,6 @@ export class AuthService {
 
   private setUserData(userData: any): void {
     this.userUpdated.emit(userData);
-    localStorage.setItem('firstName', userData.firstName);
     localStorage.setItem('token', userData.token);
   }
 }
