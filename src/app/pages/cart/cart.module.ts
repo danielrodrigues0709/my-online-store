@@ -14,6 +14,7 @@ import { CartGuard } from './cart/cart.guard';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
 
 const routes: Routes = [
   { path: '', component: CartComponent, canDeactivate: [CartGuard] },
@@ -36,6 +37,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     ButtonModule,
     MessagesModule,
+    ToastModule,
     InputTextModule,
     InputNumberModule,
     CalendarModule,
