@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
-import { User } from 'src/app/shared/interfaces/user';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartsService } from 'src/app/shared/services/carts.service';
-import { LoginService } from 'src/app/shared/services/login.service';
-import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -16,12 +13,10 @@ export class HeaderComponent implements OnInit {
 
   items: string = '0';
   cart!: Cart;
-  user!: User;
-  isLoggedIn!: boolean;
+  user!: any;
 
   constructor(
-    private loginService: LoginService,
-    private usersService: UsersService,
+    private authService: AuthService,
     private cartService: CartsService,
     private router: Router) { }
 
@@ -30,11 +25,13 @@ export class HeaderComponent implements OnInit {
       this.cart = res;
       this.items = (this.cart.products.length).toString();
     });
-    this.loginService.loginUpdated.subscribe(res => {
-      this.isLoggedIn = res;
-    });
-    this.usersService.getUsers('1').subscribe(res => {
+    this.getUser();
+  }
+
+  getUser(): any {
+    this.authService.userUpdated.subscribe(res => {
       this.user = res;
+      return this.user;
     })
   }
 
@@ -43,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   myAccount(): void {
-    if(this.isLoggedIn) {
+    if(this.user) {
       this.router.navigate(['/my-account']);
     }
     else {
@@ -52,7 +49,8 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut(): void {
-    this.loginService.setLogin(false);
+    this.user = null;
+    localStorage.clear();
   }
 
   goToCart(): void {

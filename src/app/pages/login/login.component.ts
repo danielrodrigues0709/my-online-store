@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private router: Router,
-    private loginService: LoginService,
+    private authService: AuthService,
     private formBuilder: FormBuilder
   ) {
     this.createForm();
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (!this.form.valid) return;
-    this.loginService.setLogin(true);
+    this.authService.getUserData(this.form.getRawValue());
     if(this.state) {
       this.router.navigate([this.state]);
     }
