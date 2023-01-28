@@ -13,4 +13,9 @@ describe('AuthService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should save user in sessionStorage', () => {
+    sessionStorage.setItem('token', 'abc');
+    expect(sessionStorage.getItem('token')).toBeTruthy();
+  });
 });
