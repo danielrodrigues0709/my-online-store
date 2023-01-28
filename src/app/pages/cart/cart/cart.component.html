@@ -4,6 +4,7 @@
 <div class="resume">
     <div class="col-7">
         <h3 *ngIf="!products" class="empty">Your cart is empty</h3>
+        <h3 *ngIf="products" class="title">My cart</h3>
         <ul *ngFor="let prod of products">
             <li>
                 <img src="{{prod.product.image}}" alt="img" class="thumbnail">

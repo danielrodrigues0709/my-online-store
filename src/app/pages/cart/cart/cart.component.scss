@@ -3,6 +3,12 @@
     border: none;
 }
 
+.title {
+    width: 100%;
+    text-align: center;
+    color: grey;
+}
+
 .empty {
     width: 100%;
     text-align: center;
@@ -19,7 +25,7 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-end;
-        height: 40vh;
+        height: 35vh;
         width: 100%;
     }
 }
