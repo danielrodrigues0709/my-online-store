@@ -17,7 +17,7 @@ export class CheckoutGuard implements CanDeactivate<unknown> {
       return true;
     }
     else {
-      return component.canGoBack();
+      return component.canGoBack(nextState? nextState.url : '/cart/resume');
     }
   }
   

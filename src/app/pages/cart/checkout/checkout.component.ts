@@ -56,16 +56,16 @@ export class CheckoutComponent implements OnInit {
   }
 
   goBack(): void {
-    history.back()
+    this.router.navigate(['/cart/resume']);
   }
 
-  canGoBack(): boolean {
+  canGoBack(route: string): boolean {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to leave this page?',
       reject: () => { this.allowGoBack = false; },
       accept: () => { 
         this.allowGoBack = true;
-        this.router.navigate(['/cart/resume']);
+        this.router.navigate([route]);
       }
     });
     return this.allowGoBack;

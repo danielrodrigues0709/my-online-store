@@ -41,7 +41,7 @@ export class ResumeComponent implements OnInit {
   }
 
   goBack(): void {
-    history.back()
+    this.router.navigate(['/cart']);
   }
   
   goToCheckout(): void {
