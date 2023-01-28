@@ -15,11 +15,8 @@ export class CheckoutComponent implements OnInit {
   adressForm!: FormGroup;
   paymentForm!: FormGroup;
   products: { product: Product; quantity: any; }[] = [];
-  values: {
-    total: number,
-    discount: number,
-    totalWithDiscount: number,
-  };
+  values: any;
+  nav: any;
   allowGoBack: boolean = false;
 
   constructor(
@@ -28,16 +25,16 @@ export class CheckoutComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private cartService: CartsService,
     ) {
-    const nav = this.router.getCurrentNavigation()?.extras.state;
-    this.values = nav ? nav['values'] : {
-      total: 0,
-      discount: 0,
-      totalWithDiscount: 0
-    }
     this.createForm();
   }
 
   ngOnInit(): void {
+    this.nav = this.router.getCurrentNavigation()?.extras.state;
+    this.values = this.nav ? this.nav['values'] : {
+      total: 0,
+      discount: 0,
+      totalWithDiscount: 0
+    }
     this.products = this.cartService.getCart()?.products;
   }
 
