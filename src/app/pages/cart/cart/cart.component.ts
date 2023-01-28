@@ -57,11 +57,6 @@ export class CartComponent implements OnInit {
     history.back()
   }
 
-  canGoBack(): boolean {
-    let conf = confirm("Are you sure that you want to leave this page?").valueOf();
-    return conf;
-  }
-
   goToResume(): void {
     this.router.navigate(['/cart/resume'], {state: { values: {
       total: this.total,

@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MessageService } from 'primeng/api';
 
 import { CartComponent } from './cart.component';
 
@@ -13,8 +12,7 @@ describe('CartComponent', () => {
       imports: [
         HttpClientModule,
       ],
-      declarations: [ CartComponent ],
-      providers: [ MessageService ]
+      declarations: [ CartComponent ]
     })
     .compileComponents();
 

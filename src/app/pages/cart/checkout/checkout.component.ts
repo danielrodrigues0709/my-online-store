@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
 import { Product } from 'src/app/shared/interfaces/product';
+import { CartsService } from 'src/app/shared/services/carts.service';
 
 @Component({
   selector: 'app-checkout',
@@ -18,10 +20,13 @@ export class CheckoutComponent implements OnInit {
     discount: number,
     totalWithDiscount: number,
   };
+  allowGoBack: boolean = false;
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private confirmationService: ConfirmationService,
+    private cartService: CartsService,
     ) {
     const nav = this.router.getCurrentNavigation()?.extras.state;
     this.values = nav ? nav['values'] : {
@@ -33,6 +38,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.products = this.cartService.getCart()?.products;
   }
 
   createForm(): void {
@@ -54,6 +60,18 @@ export class CheckoutComponent implements OnInit {
 
   goBack(): void {
     history.back()
+  }
+
+  canGoBack(): boolean {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to leave this page?',
+      reject: () => { this.allowGoBack = false; },
+      accept: () => { 
+        this.allowGoBack = true;
+        this.router.navigate(['/cart/resume']);
+      }
+    });
+    return this.allowGoBack;
   }
 
   submit(): void {
