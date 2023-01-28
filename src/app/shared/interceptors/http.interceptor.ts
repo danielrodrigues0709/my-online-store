@@ -16,7 +16,7 @@ export class HttpInterceptorService implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
       
     let headers: HttpHeaders = request.headers
-            .set('token', JSON.stringify(localStorage.getItem('token')))
+            .set('token', JSON.stringify(sessionStorage.getItem('token')))
         
         request = request.clone({
             headers

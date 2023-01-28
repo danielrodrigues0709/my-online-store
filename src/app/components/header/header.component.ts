@@ -14,11 +14,16 @@ export class HeaderComponent implements OnInit {
   items: string = '0';
   cart!: Cart;
   user!: any;
+  userDataStr = sessionStorage.getItem('userData');
 
   constructor(
     private authService: AuthService,
     private cartService: CartsService,
-    private router: Router) { }
+    private router: Router) {
+      if(this.userDataStr != null) {
+        this.user = JSON.parse(this.userDataStr);
+      }
+    }
 
   ngOnInit(): void {
     this.cartService.cartUpdated.subscribe(res => {
@@ -50,7 +55,7 @@ export class HeaderComponent implements OnInit {
 
   signOut(): void {
     this.user = null;
-    localStorage.clear();
+    sessionStorage.clear();
   }
 
   goToCart(): void {

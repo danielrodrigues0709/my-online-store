@@ -28,7 +28,8 @@ export class AuthService {
   }
 
   private setUserData(userData: any): void {
+    sessionStorage.setItem('token', userData.token);
+    sessionStorage.setItem('userData', JSON.stringify(userData));
     this.userUpdated.emit(userData);
-    localStorage.setItem('token', userData.token);
   }
 }
