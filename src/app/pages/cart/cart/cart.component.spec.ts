@@ -1,5 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MessageService } from 'primeng/api';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CartComponent } from './cart.component';
 
@@ -11,8 +13,10 @@ describe('CartComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
+        ReactiveFormsModule
       ],
-      declarations: [ CartComponent ]
+      declarations: [ CartComponent ],
+      providers: [MessageService]
     })
     .compileComponents();
 
