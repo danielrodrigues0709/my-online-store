@@ -73,9 +73,7 @@ export class CheckoutComponent implements OnInit {
 
   submit(): void {
     if(this.adressForm.invalid || this.paymentForm.invalid) return;
-    
-    console.log(this.adressForm.value)
-    console.log(this.paymentForm.value)
+    this.router.navigate(['/cart/confirmation']);
   }
 
 }
