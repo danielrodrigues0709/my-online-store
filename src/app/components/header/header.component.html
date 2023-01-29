@@ -3,12 +3,12 @@
         <img src="../assets/logo.png" style="height: 50px;" alt="logo" class="image" (click)="goHome()">
     </div>
     <div class="section">
-        <i class="cart pi pi-shopping-cart mr-4 p-text-secondary" pBadge style="font-size: 1.5rem" [value]="items" (click)="goToCart()"></i>
-        <p-avatar icon="pi pi-user" shape="circle" class="avatar" (click)="myAccount()"></p-avatar>
+        <i class="cart pi pi-shopping-cart mr-4 p-text-secondary" pBadge style="font-size: 1.5rem" [value]="items" (click)="goToCart()" pTooltip="My cart" tooltipPosition="bottom"></i>
+        <p-avatar icon="pi pi-user" shape="circle" class="avatar" (click)="myAccount()" pTooltip="My account" tooltipPosition="bottom"></p-avatar>
         <div *ngIf="user?.id">
             <h4 class="userName">{{user?.firstName}} {{user?.lastName}}</h4>
         </div>
-        <div *ngIf="user?.id" class="signout">
+        <div *ngIf="user?.id" class="signout" pTooltip="Sign out" tooltipPosition="bottom">
             <i class="pi pi-sign-out mr-4 p-text-secondary" style="font-size: 1.5rem" (click)="signOut()"></i>
         </div>
     </div>

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import {CarouselModule} from 'primeng/carousel';
-import {TabViewModule} from 'primeng/tabview';
-import {CardModule} from 'primeng/card';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
+import { CarouselModule } from 'primeng/carousel';
+import { TabViewModule } from 'primeng/tabview';
+import { CardModule } from 'primeng/card';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TooltipModule } from 'primeng/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './pages/admin/admin.component';
@@ -54,6 +54,7 @@ import { DropdownModule } from 'primeng/dropdown';
     SplitButtonModule,
     ButtonModule,
     ProgressSpinnerModule,
+    TooltipModule,
     DropdownModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,

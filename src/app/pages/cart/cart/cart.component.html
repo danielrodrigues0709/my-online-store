@@ -11,7 +11,7 @@
                 <strong>{{prod.product.title}} - {{prod.product.price | currency}}</strong>
                 <input id="ipt{{prod.product.id}}" type="number" [(ngModel)]="prod.quantity" class="input" min="1" (change)="onChange()">
                 <strong>{{prod.product.price * prod.quantity | currency}}</strong>
-                <i class="icon pi pi-trash" (click)="removeFromCart(prod)"></i>
+                <i class="icon pi pi-trash" (click)="removeFromCart(prod)" pTooltip="Remove" tooltipPosition="right"></i>
             </li>
         </ul>
     </div>
