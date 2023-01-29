@@ -19,12 +19,13 @@ import { AvatarModule } from 'primeng/avatar';
 import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
 import { LoginComponent } from './pages/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HttpInterceptorService } from './shared/interceptors/http.interceptor';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -48,10 +49,12 @@ import { HttpInterceptorService } from './shared/interceptors/http.interceptor';
     AvatarModule,
     MessagesModule,
     ReactiveFormsModule,
+    FormsModule,
     InputTextModule,
     SplitButtonModule,
     ButtonModule,
     ProgressSpinnerModule,
+    DropdownModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

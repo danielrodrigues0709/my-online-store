@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   jewelery: Product[] = [];
   mensClothing: Product[] = [];
   womensClothing: Product[] = [];
+  selectedProduct: Product | undefined;
 
   items!: MenuItem[];
 
