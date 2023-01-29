@@ -61,6 +61,10 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   goToResume(): void {
+    if(!this.cart || this.cart?.products.length == 0) {
+      this.messageService.add({severity:'warn', summary:'Attention', detail:'Your cart is empty!'});
+      return;
+    }
     this.router.navigate(['/cart/resume'], {state: { values: {
       total: this.total,
       discount: this.discount,
