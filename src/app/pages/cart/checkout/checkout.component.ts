@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
+import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
 
@@ -14,6 +15,7 @@ export class CheckoutComponent implements OnInit {
 
   adressForm!: FormGroup;
   paymentForm!: FormGroup;
+  cart!: Cart;
   products: { product: Product; quantity: any; }[] = [];
   values: any;
   nav: any;
@@ -26,16 +28,17 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartsService,
     ) {
     this.createForm();
-  }
-
-  ngOnInit(): void {
     this.nav = this.router.getCurrentNavigation()?.extras.state;
-    this.values = this.nav ? this.nav['values'] : {
+    this.values = this.nav ? this.nav['values'].values : {
       total: 0,
       discount: 0,
       totalWithDiscount: 0
     }
-    this.products = this.cartService.getCart()?.products;
+  }
+
+  ngOnInit(): void {
+    this.cart = this.cartService.getCart();
+    this.products = this.cart?.products;
   }
 
   createForm(): void {
@@ -73,6 +76,10 @@ export class CheckoutComponent implements OnInit {
 
   submit(): void {
     if(this.adressForm.invalid || this.paymentForm.invalid) return;
+    this.cartService.setCart({
+      ...this.cart,
+      products: []
+    });
     this.router.navigate(['/cart/confirmation']);
   }
 
