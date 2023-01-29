@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -6,14 +6,17 @@ import { Cart } from 'src/app/shared/interfaces/cart';
 import { Coupon } from 'src/app/shared/interfaces/coupon';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
+  protected ngUnsubscribe: Subject<any> = new Subject();
   cart!: Cart;
   form!: FormGroup;
   products: { product: Product; quantity: any; }[] = [];
@@ -34,7 +37,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCart();
-    this.cartService.getCoupons().subscribe(res => {
+    this.cartService.getCoupons().pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.coupons = res.data;
     });
   }
@@ -107,5 +110,15 @@ export class CartComponent implements OnInit {
       this.discount = 0;
     }
   }
+  
+  onSubscriptionsDestroy(ngUnsubscribe: Subject<any>): void {
+    ngUnsubscribe.next(true);
+	  ngUnsubscribe.complete();
+	  ngUnsubscribe.unsubscribe();
+	}
+
+	ngOnDestroy(): void {
+	  this.onSubscriptionsDestroy(this.ngUnsubscribe);
+	}
 
 }

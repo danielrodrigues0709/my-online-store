@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartsService } from 'src/app/shared/services/carts.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
+  protected ngUnsubscribe: Subject<any> = new Subject();
   items: string = '0';
   cart!: Cart;
   user!: any;
@@ -26,7 +29,7 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.cartService.cartUpdated.subscribe(res => {
+    this.cartService.cartUpdated.pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.cart = res;
       this.items = (this.cart.products.length).toString();
     });
@@ -34,7 +37,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser(): any {
-    this.authService.userUpdated.subscribe(res => {
+    this.authService.userUpdated.pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.user = res;
       return this.user;
     })
@@ -61,5 +64,15 @@ export class HeaderComponent implements OnInit {
   goToCart(): void {
     this.router.navigate(['/cart']);
   }
+  
+  onSubscriptionsDestroy(ngUnsubscribe: Subject<any>): void {
+    ngUnsubscribe.next(true);
+	  ngUnsubscribe.complete();
+	  ngUnsubscribe.unsubscribe();
+	}
+
+	ngOnDestroy(): void {
+	  this.onSubscriptionsDestroy(this.ngUnsubscribe);
+	}
 
 }
