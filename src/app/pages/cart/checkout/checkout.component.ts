@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
@@ -26,6 +26,7 @@ export class CheckoutComponent implements OnInit {
     private formBuilder: FormBuilder,
     private confirmationService: ConfirmationService,
     private cartService: CartsService,
+    private messageService: MessageService
     ) {
     this.createForm();
     this.nav = this.router.getCurrentNavigation()?.extras.state;
@@ -75,7 +76,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   submit(): void {
-    if(this.adressForm.invalid || this.paymentForm.invalid) return;
+    if(this.adressForm.invalid || this.paymentForm.invalid) {
+      this.messageService.add({severity:'warn', summary:'Attention', detail:'Please fill out the form!'});
+      return;
+    }
     this.cartService.setCart({
       ...this.cart,
       products: []
