@@ -1,13 +1,32 @@
 <div class="nav-bar"></div>
 <div class="content">
-    <form action="submit">
-        <div class="form">
-            <h1>Congratulations!</h1>
-            <h4>
-                Your purchase was successfully completed.
-                <br>
-                Now you just need to wait for your products.
-            </h4>
+    <div class="msg">
+        <h2 class="title">Congratulations!</h2>
+        <br>
+        <h5>
+            Your purchase was successfully completed.
+            <br>
+            Now you just need to wait for your products.
+        </h5>
+    </div>
+
+    <div class="resume">
+        <div class="col-7">
+            <h3 *ngIf="products" class="title">Resume</h3>
+            <ul *ngFor="let prod of products">
+                <li>
+                    <img src="{{prod.product.image}}" alt="img" class="thumbnail">
+                    <strong>{{prod.product.title}} - {{prod.product.price | currency}} - {{prod.quantity}} - {{prod.product.price * prod.quantity | currency}}</strong> 
+                </li>
+            </ul>
         </div>
-    </form>
+
+        <div class="values">
+            <div class="totals">
+                <h4>Total amount: {{values.total | currency}}</h4>
+                <h4>Discount: {{values.discount | currency}}</h4>
+                <h3>Total with discount: {{values.totalWithDiscount | currency}}</h3>
+            </div>
+        </div>
+    </div>
 </div>

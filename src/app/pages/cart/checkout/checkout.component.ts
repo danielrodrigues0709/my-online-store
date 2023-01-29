@@ -80,7 +80,10 @@ export class CheckoutComponent implements OnInit {
       ...this.cart,
       products: []
     });
-    this.router.navigate(['/cart/confirmation']);
+    this.router.navigate(['/cart/confirmation'], {state: { resume: {
+      values: this.values,
+      products: this.products
+    }}});
   }
 
 }
