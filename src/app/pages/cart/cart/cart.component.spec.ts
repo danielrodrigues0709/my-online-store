@@ -45,4 +45,13 @@ describe('CartComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h3')).toBeTruthy();
   });
+
+  it("show display products in cart", () => {
+    if(component.cart) {
+      expect(component.products.length).toBeGreaterThan(0);
+    }
+    else {
+      expect(component.products).toBeFalsy();
+    }
+  });
 });

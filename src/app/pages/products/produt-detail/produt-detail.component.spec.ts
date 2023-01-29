@@ -43,7 +43,10 @@ describe('ProdutDetailComponent', () => {
     const fixture = TestBed.createComponent(ProdutDetailComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    if(!component.product) {
+    if(component.product) {
+      expect(compiled.querySelector('img')).toBeTruthy();
+    }
+    else  {
       expect(compiled.querySelector('img')).toBeFalsy();
     }
   });
