@@ -33,13 +33,15 @@ export class LoginComponent implements OnInit {
   login(): void {
     if (!this.form.valid) return;
     this.authService.getUserData(this.form.getRawValue());
-    if(sessionStorage.getItem('token') && sessionStorage.getItem('token') != "undefined") {
-      history.back();
-    }
-    else {
-      this.messageService.add({severity:'warn', summary:'Attention', detail:'User does not exists!'});
-      return;
-    }
+    setTimeout(() => {
+      if(sessionStorage.getItem('token') && sessionStorage.getItem('token') != "undefined") {
+        history.back();
+      }
+      else {
+        this.messageService.add({severity:'warn', summary:'Attention', detail:'User does not exists!'});
+        return;
+      }
+    }, 1000);
   }
 
 }
