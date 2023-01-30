@@ -19,12 +19,8 @@ See below the options available:
 
 For authentication, feel free to use some of the users listed in [this json file from DummyJson API](https://dummyjson.com/users), by copy and past a username and its correspondent password. The name of the user will appear on page header, and a token will be set for the requests. In order to facilitate, here are two option to be used in the project:
 
-* Terry Medhurst
-...username: atuny0
-...password: 9uQFF1Lh
-* Sheldon Quigley
-...username: hbingley1
-...password: CQutx25i8r
+* Terry Medhurst - username: atuny0 , password: 9uQFF1Lh
+* Sheldon Quigley - username: hbingley1 , password: CQutx25i8r
 
 ## Code scaffolding
 
