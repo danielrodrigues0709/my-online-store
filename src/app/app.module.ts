@@ -26,6 +26,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HttpInterceptorService } from './shared/interceptors/http.interceptor';
 import { DropdownModule } from 'primeng/dropdown';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ButtonModule,
     ProgressSpinnerModule,
     TooltipModule,
+    ToastModule,
     DropdownModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,
