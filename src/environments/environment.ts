@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://fakestoreapi.com/',
+  // apiUrl: 'https://fakestoreapi.com/',
+  apiUrl: 'http://localhost:3000/',
   authUrl: 'https://dummyjson.com/auth/'
 };
 

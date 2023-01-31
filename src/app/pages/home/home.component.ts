@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    let jewelery$ = this._productsService.getProducts("category/jewelery");
-    let mensClothing$ = this._productsService.getProducts("category/men's clothing");
-    let womensClothing$ = this._productsService.getProducts("category/women's clothing");
+    let jewelery$ = this._productsService.getProductsByCategory("jewelery");
+    let mensClothing$ = this._productsService.getProductsByCategory("men's clothing");
+    let womensClothing$ = this._productsService.getProductsByCategory("women's clothing");
     forkJoin([jewelery$, mensClothing$, womensClothing$]).pipe(takeUntil(this.ngUnsubscribe)).subscribe((res: any) => {
       this.jewelery = res[0];
       this.mensClothing = res[1];

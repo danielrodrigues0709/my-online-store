@@ -8,13 +8,33 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductsService {
 
-  apiUrl: string = environment.apiUrl + 'products/';
+  apiUrl: string = environment.apiUrl + 'products';
 
   constructor(private http: HttpClient) { }
 
   getProducts(params?: string): Observable<any> {
     params = params ? params : '';
-    return this.http.get(this.apiUrl + params);
+    return this.http.get(this.apiUrl + params, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getProductsByCategory(category?: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}?category=${category}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getProductById(id?: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
   deleteProduct(id: number): Observable<any> {
