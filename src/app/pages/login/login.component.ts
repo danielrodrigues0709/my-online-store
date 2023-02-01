@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (!this.form.valid) return;
-    this.authService.getUserData(this.form.getRawValue());
+    this.authService.getUserData(this.form.getRawValue()).subscribe(res => {
+      this.authService.setUserData(res[0]);
+    });
     setTimeout(() => {
       if(localStorage.getItem('token') && localStorage.getItem('token') != "undefined") {
         history.back();

@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Login } from '../interfaces/login';
 
@@ -7,27 +9,20 @@ import { Login } from '../interfaces/login';
 })
 export class AuthService {
 
-  authUrl: string = environment.authUrl + 'login';
+  apiUrl: string = environment.apiUrl + 'users';
   @Output() userUpdated: EventEmitter<any> = new EventEmitter<any>()
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getUserData(login: Login): any {
-    login.expiresInMins = 60;
-    fetch(this.authUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(login)
-    })
-    .then(res => {
-      return res.json()
-    })
-    .then(res => {
-      this.setUserData(res);
+  getUserData(login: Login): Observable<any> {
+    return this.http.get(`${this.apiUrl}?username=${login.username}&password=${login.password}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
     });
   }
 
-  private setUserData(userData: any): void {
+  setUserData(userData: any): void {
     localStorage.setItem('token', userData.token);
     localStorage.setItem('userData', JSON.stringify(userData));
     this.userUpdated.emit(userData);

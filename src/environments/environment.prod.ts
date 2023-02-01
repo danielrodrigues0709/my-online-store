@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://fakestoreapi.com/',
-  authUrl: 'https://dummyjson.com/auth/'
+  apiUrl: 'https://my-json-server.typicode.com/danielrodrigues0709/my-online-store/',
 };
