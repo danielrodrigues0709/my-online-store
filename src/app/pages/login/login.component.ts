@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     if (!this.form.valid) return;
     this.authService.getUserData(this.form.getRawValue());
     setTimeout(() => {
-      if(sessionStorage.getItem('token') && sessionStorage.getItem('token') != "undefined") {
+      if(localStorage.getItem('token') && localStorage.getItem('token') != "undefined") {
         history.back();
       }
       else {

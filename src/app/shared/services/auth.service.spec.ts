@@ -14,8 +14,8 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should save user in sessionStorage', () => {
-    sessionStorage.setItem('token', 'abc');
-    expect(sessionStorage.getItem('token')).toBeTruthy();
+  it('should save user in localStorage', () => {
+    localStorage.setItem('token', 'abc');
+    expect(localStorage.getItem('token')).toBeTruthy();
   });
 });

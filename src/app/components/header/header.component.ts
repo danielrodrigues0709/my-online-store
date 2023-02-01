@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   items: string = '0';
   cart!: Cart;
   user!: any;
-  userDataStr = sessionStorage.getItem('userData');
+  userDataStr = localStorage.getItem('userData');
 
   constructor(
     private authService: AuthService,
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   signOut(): void {
     this.user = null;
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
   goToCart(): void {
