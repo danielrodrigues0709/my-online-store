@@ -4,7 +4,10 @@
     </div>
     <div class="section">
         <i class="cart pi pi-shopping-cart mr-4 p-text-secondary" pBadge style="font-size: 1.5rem" [value]="items" (click)="goToCart()" pTooltip="My cart" tooltipPosition="bottom"></i>
-        <p-avatar icon="pi pi-user" shape="circle" class="avatar" (click)="myAccount()" pTooltip="My account" tooltipPosition="bottom"></p-avatar>
+        <p-avatar *ngIf="!user" icon="pi pi-user" shape="circle" class="avatar" (click)="myAccount()" pTooltip="My account" tooltipPosition="bottom"></p-avatar>
+        <p-avatar *ngIf="user" shape="circle" class="avatar" (click)="myAccount()" pTooltip="My account" tooltipPosition="bottom">
+            <img src="{{user.image}}" alt="">
+        </p-avatar>
         <div *ngIf="user?.id">
             <h4 class="userName">{{user?.firstName}} {{user?.lastName}}</h4>
         </div>
