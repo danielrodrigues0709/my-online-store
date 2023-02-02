@@ -1,1 +1,93 @@
-<p>user works!</p>
+<div class="nav-bar"></div>
+<div class="info">
+    <div class="forms">
+        <div class="p-fluid grid formgrid">
+            <form [formGroup]="form">
+                <h3 class="title">Personal Information</h3>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="firstName">First Name</label>
+                        <input #firstName pInputText class="p-inputtext-sm" type="text" formControlName="firstName">
+                    </div>
+                    <div class="field col-4">
+                        <label for="lastName">Last Name</label>
+                        <input #lastName pInputText class="p-inputtext-sm" type="text" formControlName="lastName">
+                    </div>
+                    <div class="field col-4">
+                        <label for="email">E-mail</label>
+                        <input #email pInputText class="p-inputtext-sm" type="email" formControlName="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="gender">Gender</label>
+                        <input #gender pInputText class="p-inputtext-sm" type="text" formControlName="gender">
+                    </div>
+                    <div class="field col-3">
+                        <label for="phone">Phone Number</label>
+                        <input #phone pInputText class="p-inputtext-sm" type="text" formControlName="phone">
+                    </div>
+                    <div class="field col-3">
+                        <label for="birthDate">Birth Date</label>
+                        <input #birthDate pInputText class="p-inputtext-sm" type="text" formControlName="birthDate">
+                    </div>
+                    <div class="field col-3">
+                        <label for="role">E-mail</label>
+                        <input #role pInputText class="p-inputtext-sm" type="text" formControlName="role">
+                    </div>
+                </div>
+
+                <h3 class="title">Account Information</h3>
+                <div class="row">
+                    <div class="col-4">
+                        <label for="username">Username</label>
+                        <input #username pInputText class="p-inputtext-sm" type="text" formControlName="username">
+                    </div>
+                    <div class="field col-4">
+                        <label for="password">Password</label>
+                        <input #password pInputText class="p-inputtext-sm" type="password" formControlName="password">
+                    </div>
+                    <div class="field col-4">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input #confirm_password pInputText class="p-inputtext-sm" type="password" formControlName="confirm_password">
+                    </div>
+                </div>
+
+                <h3 class="title">Adress Information</h3>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="zip_code">Zip Code</label>
+                        <input #zip_code pInputText class="p-inputtext-sm" type="text" formControlName="zip_code">
+                    </div>
+                    <div class="field col-6">
+                        <label for="adress">Adress</label>
+                        <input #adress pInputText class="p-inputtext-sm" type="text" formControlName="adress">
+                    </div>
+                    <div class="field col-3">
+                        <label for="number">Number</label>
+                        <input #number pInputText class="p-inputtext-sm" type="text" formControlName="number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field col-4">
+                        <label for="city">City</label>
+                        <input #city pInputText class="p-inputtext-sm" type="text" formControlName="city">
+                    </div>
+                    <div class="field col-4">
+                        <label for="state">State</label>
+                        <input #state pInputText class="p-inputtext-sm" type="text" formControlName="state">
+                    </div>
+                    <div class="field col-4">
+                        <label for="country">Country</label>
+                        <input #country pInputText class="p-inputtext-sm" type="text" formControlName="country">
+                    </div>
+                </div>
+                
+                <div class="btn-checkout">
+                    <button pButton pRipple type="button" class="p-button" (click)="submit()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

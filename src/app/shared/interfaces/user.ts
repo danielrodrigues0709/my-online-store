@@ -3,8 +3,16 @@ export interface User {
     email: string,
     username: string,
     password: string,
-    name: {
-        firstname: string,
-        lastname: string
-    },
+    firstName: string,
+    lastName: string,
+    gender: string,
+    phone: number,
+    birthDate: string,
+    role: string,
+    adress: string,
+    number: number,
+    city: string,
+    state: string,
+    country: string,
+    zip_code: number,
 }
