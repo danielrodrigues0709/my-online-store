@@ -4,6 +4,10 @@
     justify-content: center;
 }
 
+.tabview-custom {
+    padding-bottom: 50px !important;
+}
+
 :host ::ng-deep .p-dropdown {
     width: 50vw !important;
     height: 2.8rem;

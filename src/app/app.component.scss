@@ -1,5 +1,7 @@
-router-outlet {
-    overflow-y: auto !important;
+app-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10;
 }
 app-footer {
     position: fixed !important;
