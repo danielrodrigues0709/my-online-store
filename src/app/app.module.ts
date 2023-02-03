@@ -31,6 +31,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { AddressFormComponent } from './pages/address-form/address-form.component';
 import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     DropdownModule,
     AccordionModule,
     TableModule,
+    CalendarModule,
     DynamicDialogModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,

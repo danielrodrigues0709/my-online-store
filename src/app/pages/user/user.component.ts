@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -11,7 +12,7 @@ import { AddressFormComponent } from '../address-form/address-form.component';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-  providers: [ DialogService ]
+  providers: [ DialogService, DatePipe ]
 })
 export class UserComponent implements OnInit {
 
@@ -19,21 +20,28 @@ export class UserComponent implements OnInit {
   user!: User;
   addresses: Address[] = [];
   ref!: DynamicDialogRef;
+  genders: any[] = []
 
   constructor(
     private formBuilder: FormBuilder,
     public dialogService: DialogService,
     private messageService: MessageService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private datepipe: DatePipe
     ) {
       this.createForm();
       let userDataStr = localStorage.getItem('userData');
       if(userDataStr != null) this.user = JSON.parse(userDataStr);
+      this.genders = [
+        {name: 'Male', value: 'male'},
+        {name: 'Female', value: 'female'}
+      ];
     }
 
   ngOnInit(): void {
     this.form.patchValue(this.user);
     this.form.controls['confirm_password'].patchValue(this.user?.password);
+    this.form.controls['birthDate'].patchValue(new Date(this.user?.birthDate));
     this.user?.address.forEach(ad => {
       this.addresses.push(ad);
     });
@@ -90,6 +98,7 @@ export class UserComponent implements OnInit {
     let formValue = this.form.value;
     formValue = {
       ...this.form.value,
+      birthDate: this.datepipe.transform(this.form.get('birthDate')?.value, 'yyyy-MM-dd'),
       address: this.addresses
     }
     if(this.user) {

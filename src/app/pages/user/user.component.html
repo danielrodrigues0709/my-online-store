@@ -25,7 +25,7 @@
                         <div class="row">
                             <div class="col-4">
                                 <label for="gender">Gender</label>
-                                <input #gender pInputText class="p-inputtext-sm" type="text" formControlName="gender">
+                                <p-dropdown #gender [options]="genders" optionLabel="name" formControlName="gender" optionValue="value"></p-dropdown>
                             </div>
                             <div class="field col-4">
                                 <label for="phone">Phone Number</label>
@@ -33,7 +33,7 @@
                             </div>
                             <div class="field col-4">
                                 <label for="birthDate">Birth Date</label>
-                                <input #birthDate pInputText class="p-inputtext-sm" type="text" formControlName="birthDate">
+                                <p-calendar #birthDate [showIcon]="true" inputId="icon" formControlName="birthDate"></p-calendar>
                             </div>
                         </div>
                     </p-accordionTab>
@@ -81,7 +81,7 @@
                     </p-table>
 
                     <div class="btn-address">
-                        <button pButton pRipple type="button" class="p-button" (click)="showModal()">Add/Edit address</button>
+                        <button pButton pRipple type="button" class="p-button" (click)="showModal()">Add Address</button>
                     </div>
                 </p-accordionTab>
             </p-accordion>
