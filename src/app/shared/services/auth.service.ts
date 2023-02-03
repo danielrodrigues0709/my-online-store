@@ -23,7 +23,7 @@ export class AuthService {
   }
 
   setUserData(userData: any): void {
-    localStorage.setItem('token', userData.token);
+    localStorage.setItem('token', 'bearer_random_token');
     localStorage.setItem('userData', JSON.stringify(userData));
     this.userUpdated.emit(userData);
   }
