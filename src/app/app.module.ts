@@ -27,6 +27,10 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { HttpInterceptorService } from './shared/interceptors/http.interceptor';
 import { DropdownModule } from 'primeng/dropdown';
 import { ToastModule } from 'primeng/toast';
+import { AccordionModule } from 'primeng/accordion';
+import { AddressFormComponent } from './pages/address-form/address-form.component';
+import { TableModule } from 'primeng/table';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,8 @@ import { ToastModule } from 'primeng/toast';
     UserComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,10 @@ import { ToastModule } from 'primeng/toast';
     ProgressSpinnerModule,
     TooltipModule,
     ToastModule,
-    DropdownModule
+    DropdownModule,
+    AccordionModule,
+    TableModule,
+    DynamicDialogModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

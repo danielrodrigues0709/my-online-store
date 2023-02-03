@@ -1,0 +1,22 @@
+.btn-nav {
+    background-color: darkgrey !important;
+    border: none;
+}
+
+.info {
+    margin: 30px;
+    padding-bottom: 50px !important;
+
+    .btn-save {
+        width: 100%;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        
+        .p-button {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
