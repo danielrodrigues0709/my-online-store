@@ -66,6 +66,7 @@
                                 <th>State</th>
                                 <th>Country</th>
                                 <th>Postal Code</th>
+                                <th>Actions</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-address>
@@ -76,6 +77,28 @@
                                 <td>{{address.state}}</td>
                                 <td>{{address.country}}</td>
                                 <td>{{address.postalCode}}</td>
+                                <td>
+                                    <button
+                                        pButton
+                                        pRipple
+                                        type="button"
+                                        icon="pi pi-trash"
+                                        pTooltip="Remove"
+                                        tooltipPosition="bottom"
+                                        class="p-button-sm p-button-rounded p-button-text"
+                                        (click)="delete(address)">
+                                    </button>
+                                    <button
+                                        pButton
+                                        pRipple
+                                        type="button"
+                                        icon="pi pi-pencil"
+                                        pTooltip="Edit"
+                                        tooltipPosition="bottom"
+                                        class="p-button-sm p-button-rounded p-button-text"
+                                        (click)="showModal(address)">
+                                    </button>
+                                </td>
                             </tr>
                         </ng-template>
                     </p-table>

@@ -25,7 +25,11 @@ export class AddressFormComponent implements OnInit {
       this.createForm();
     }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.config.data?.element) {
+      this.form.patchValue(this.config.data.element);
+    }
+  }
 
   createForm(): void {
     this.form = this.formBuilder.group({

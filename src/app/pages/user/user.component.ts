@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Address } from 'src/app/shared/interfaces/address';
 import { User } from 'src/app/shared/interfaces/user';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { AddressFormComponent } from '../address-form/address-form.component';
 
@@ -27,6 +28,7 @@ export class UserComponent implements OnInit {
     public dialogService: DialogService,
     private messageService: MessageService,
     private usersService: UsersService,
+    private authService: AuthService,
     private datepipe: DatePipe
     ) {
       this.createForm();
@@ -69,6 +71,14 @@ export class UserComponent implements OnInit {
     });
   }
 
+  delete(element: Address): void{
+    let item = this.addresses.findIndex(ad => ad == element);
+    if(item) {
+      this.addresses.splice(item, 1);
+      this.messageService.add({severity:'success', summary:'Success', detail:'Address removed'});
+    }
+  }
+
   showModal(element?: Address) {
     this.ref = this.dialogService.open(AddressFormComponent, {
         header: 'Address Information',
@@ -78,7 +88,13 @@ export class UserComponent implements OnInit {
         }
     })
     this.ref.onClose.subscribe((addressData: Address) => {
-      this.usersService.setAddress(addressData);
+      if(element) {
+        let item = this.addresses.findIndex(ad => ad == element);
+        this.addresses[item] = addressData;
+      }
+      else {
+        this.usersService.setAddress(addressData);
+      }
     });
   }
 
@@ -104,6 +120,8 @@ export class UserComponent implements OnInit {
     if(this.user) {
       this.usersService.updateUser(formValue, this.user.id).subscribe(res => {
         this.messageService.add({severity:'success', summary:'Success', detail:'User updated!'});
+        localStorage.removeItem('userData');
+        this.authService.setUserData(res);
       })
     }
     else {
