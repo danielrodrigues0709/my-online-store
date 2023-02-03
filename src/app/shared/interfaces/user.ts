@@ -1,3 +1,5 @@
+import { Address } from "./address";
+
 export interface User {
     id: number,
     email: string,
@@ -9,10 +11,5 @@ export interface User {
     phone: number,
     birthDate: string,
     role: string,
-    adress: string,
-    number: number,
-    city: string,
-    state: string,
-    country: string,
-    zip_code: number,
+    address: Address[]
 }
