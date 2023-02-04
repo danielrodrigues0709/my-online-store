@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -6,14 +6,17 @@ import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
 import { ProductsService } from 'src/app/shared/services/products.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-produt-detail',
   templateUrl: './produt-detail.component.html',
   styleUrls: ['./produt-detail.component.scss']
 })
-export class ProdutDetailComponent implements OnInit {
+export class ProdutDetailComponent implements OnInit, OnDestroy {
 
+  protected ngUnsubscribe: Subject<any> = new Subject();
   id!: string;
   form!: FormGroup;
   product!: Product;
@@ -32,7 +35,7 @@ export class ProdutDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts(this.id).subscribe(res => {
+    this.productService.getProducts(this.id).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.product = res;
       this.form.get('rating')?.patchValue(this.product.rating.rate);
     });
@@ -47,7 +50,7 @@ export class ProdutDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    history.back()
+    this.router.navigate(['/home'])
   }
 
   proceedToCart(): void {
@@ -80,5 +83,15 @@ export class ProdutDetailComponent implements OnInit {
     this.cartService.setCart(this.cart);
     this.messageService.add({severity:'success', summary:'Success', detail:'Product added to cart'});
   }
+  
+  onSubscriptionsDestroy(ngUnsubscribe: Subject<any>): void {
+    ngUnsubscribe.next(true);
+	  ngUnsubscribe.complete();
+	  ngUnsubscribe.unsubscribe();
+	}
+
+	ngOnDestroy(): void {
+	  this.onSubscriptionsDestroy(this.ngUnsubscribe);
+	}
 
 }

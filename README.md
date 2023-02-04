@@ -17,6 +17,11 @@ See below the options available:
 * 20OFF - for 20% discount,
 * 25OFF - for 25% discount
 
+For authentication, feel free to use some of the users listed in [this json file from DummyJson API](https://dummyjson.com/users), by copy and past a username and its correspondent password. The name of the user will appear on page header, and a token will be set for the requests. In order to facilitate, here are two option to be used in the project:
+
+* Terry Medhurst - username: atuny0 , password: 9uQFF1Lh
+* Sheldon Quigley - username: hbingley1 , password: CQutx25i8r
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

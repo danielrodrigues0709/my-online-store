@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
+import { CartsService } from 'src/app/shared/services/carts.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,27 +15,31 @@ export class CheckoutComponent implements OnInit {
 
   adressForm!: FormGroup;
   paymentForm!: FormGroup;
+  cart!: Cart;
   products: { product: Product; quantity: any; }[] = [];
-  values: {
-    total: number,
-    discount: number,
-    totalWithDiscount: number,
-  };
+  values: any;
+  nav: any;
+  allowGoBack: boolean = false;
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private confirmationService: ConfirmationService,
+    private cartService: CartsService,
+    private messageService: MessageService
     ) {
-    const nav = this.router.getCurrentNavigation()?.extras.state;
-    this.values = nav ? nav['values'] : {
+    this.createForm();
+    this.nav = this.router.getCurrentNavigation()?.extras.state;
+    this.values = this.nav ? this.nav['values'].values : {
       total: 0,
       discount: 0,
       totalWithDiscount: 0
     }
-    this.createForm();
   }
 
   ngOnInit(): void {
+    this.cart = this.cartService.getCart();
+    this.products = this.cart?.products;
   }
 
   createForm(): void {
@@ -53,14 +60,34 @@ export class CheckoutComponent implements OnInit {
   }
 
   goBack(): void {
-    history.back()
+    this.router.navigate(['/cart/resume']);
+  }
+
+  canGoBack(route: string): boolean {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to leave this page?',
+      reject: () => { this.allowGoBack = false; },
+      accept: () => { 
+        this.allowGoBack = true;
+        this.router.navigate([route]);
+      }
+    });
+    return this.allowGoBack;
   }
 
   submit(): void {
-    if(this.adressForm.invalid || this.paymentForm.invalid) return;
-    
-    console.log(this.adressForm.value)
-    console.log(this.paymentForm.value)
+    if(this.adressForm.invalid || this.paymentForm.invalid) {
+      this.messageService.add({severity:'warn', summary:'Attention', detail:'Please fill out the form!'});
+      return;
+    }
+    this.cartService.setCart({
+      ...this.cart,
+      products: []
+    });
+    this.router.navigate(['/cart/confirmation'], {state: { resume: {
+      values: this.values,
+      products: this.products
+    }}});
   }
 
 }

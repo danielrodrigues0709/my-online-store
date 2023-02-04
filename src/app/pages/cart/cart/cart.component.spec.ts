@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MessageService } from 'primeng/api';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { CartComponent } from './cart.component';
 
@@ -12,9 +13,10 @@ describe('CartComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         HttpClientModule,
+        ReactiveFormsModule
       ],
       declarations: [ CartComponent ],
-      providers: [ MessageService ]
+      providers: [MessageService]
     })
     .compileComponents();
 
@@ -42,5 +44,14 @@ describe('CartComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h3')).toBeTruthy();
+  });
+
+  it("show display products in cart", () => {
+    if(component.cart) {
+      expect(component.products.length).toBeGreaterThan(0);
+    }
+    else {
+      expect(component.products).toBeFalsy();
+    }
   });
 });

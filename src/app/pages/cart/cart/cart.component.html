@@ -4,13 +4,14 @@
 <div class="resume">
     <div class="col-7">
         <h3 *ngIf="!products" class="empty">Your cart is empty</h3>
+        <h3 *ngIf="products" class="title">My cart</h3>
         <ul *ngFor="let prod of products">
             <li>
                 <img src="{{prod.product.image}}" alt="img" class="thumbnail">
                 <strong>{{prod.product.title}} - {{prod.product.price | currency}}</strong>
                 <input id="ipt{{prod.product.id}}" type="number" [(ngModel)]="prod.quantity" class="input" min="1" (change)="onChange()">
                 <strong>{{prod.product.price * prod.quantity | currency}}</strong>
-                <i class="icon pi pi-trash" (click)="removeFromCart(prod)"></i>
+                <i class="icon pi pi-trash" (click)="removeFromCart(prod)" pTooltip="Remove" tooltipPosition="right"></i>
             </li>
         </ul>
     </div>
@@ -32,3 +33,4 @@
         </div>
     </div>
 </div>
+<p-toast></p-toast>

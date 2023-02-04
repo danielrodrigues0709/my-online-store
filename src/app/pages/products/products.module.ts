@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { MessageService } from 'primeng/api';
 import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product-detail', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
     ButtonModule,
     RatingModule,
     MessagesModule,
+    ToastModule,
     CommonModule
   ],
   providers: [MessageService],

@@ -1,0 +1,45 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 6vh 5vw;
+    padding: 6vh 5vw;
+    background-color: rgb(240, 240, 240);
+
+    .msg {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.title {
+    text-align: center;
+    color: grey;
+}
+
+.resume {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .values {
+        width: 800px;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .totals {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+    }
+}
+
+.thumbnail {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 20px;
+}

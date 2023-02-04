@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CheckoutComponent } from './checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ConfirmationService } from 'primeng/api';
+import { CalendarModule } from 'primeng/calendar';
 
 describe('CheckoutComponent', () => {
   let component: CheckoutComponent;
@@ -8,7 +10,12 @@ describe('CheckoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckoutComponent ]
+      imports: [
+        ReactiveFormsModule,
+        CalendarModule
+      ],
+      declarations: [ CheckoutComponent ],
+      providers: [ConfirmationService]
     })
     .compileComponents();
 
@@ -20,4 +27,18 @@ describe('CheckoutComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
+  it('should render h3', (() => {
+    const fixture = TestBed.createComponent(CheckoutComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h3')).toBeTruthy();
+  }));
+  
+  it('should render title in a h3 tag', (() => {
+    const fixture = TestBed.createComponent(CheckoutComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h3').textContent).toContain('Adress Information');
+  }));
 });

@@ -3,9 +3,16 @@
     border: none;
 }
 
+.title {
+    width: 100%;
+    text-align: center;
+    color: grey;
+}
+
 .resume {
+    padding: 30px;
     display: flex;
-    padding: 20px;
+    justify-content: space-between;
 
     .formgrid {
         margin-bottom: 20px;

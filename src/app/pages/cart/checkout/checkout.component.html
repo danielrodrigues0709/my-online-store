@@ -4,7 +4,7 @@
 <div class="resume">
     <div class="forms">
         <div class="p-fluid grid formgrid">
-            <h3>Adress Information</h3>
+            <h3 class="title">Adress Information</h3>
             <form [formGroup]="adressForm">
                 <div class="row">
                     <div class="field col-8">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="p-fluid grid formgrid">
-            <h3>Payment Information</h3>
+            <h3 class="title">Payment Information</h3>
             <form [formGroup]="paymentForm">
                 <div class="row">
                     <div class="field col-7">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="field col-5">
                         <label for="expiry_date">Expiry Date</label>
-                        <p-calendar [showIcon]="true" inputId="icon" formControlName="expiry_date"></p-calendar>
+                        <p-calendar #expiry_date [showIcon]="true" inputId="icon" formControlName="expiry_date"></p-calendar>
                     </div>
                     <div class="field col-7">
                         <label for="number">Card Number</label>
@@ -73,3 +73,5 @@
         </div>
     </div>
 </div>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast></p-toast>

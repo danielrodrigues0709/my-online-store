@@ -1,3 +1,29 @@
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 50vw !important;
+    height: 2.8rem;
+    top: 2px;
+
+    &-item {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        img {
+            max-width: 25px;
+            max-height: 25px;
+            margin: 0 10px;
+        }
+        p {
+            max-width: 90%;
+        }
+    }
+}
+
 ::ng-deep .p-carousel-item {
     margin: 5px;
     height: 50vh;
@@ -33,6 +59,7 @@
 
 .card {
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .category-card ::ng-deep .p-card-body {

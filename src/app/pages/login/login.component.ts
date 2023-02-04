@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +11,13 @@ import { LoginService } from 'src/app/shared/services/login.service';
 export class LoginComponent implements OnInit {
 
   form!: FormGroup;
-  state!: {
-    url: string;
-  }
   
   constructor(
-    private router: Router,
-    private loginService: LoginService,
-    private formBuilder: FormBuilder
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
   ) {
     this.createForm();
-    const nav = this.router.getCurrentNavigation()?.extras.state;
-    this.state = nav ? nav['url'] : undefined;
   }
 
   ngOnInit(): void {
@@ -37,13 +32,16 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (!this.form.valid) return;
-    this.loginService.setLogin(true);
-    if(this.state) {
-      this.router.navigate([this.state]);
-    }
-    else {
-      history.back();
-    }
+    this.authService.getUserData(this.form.getRawValue());
+    setTimeout(() => {
+      if(sessionStorage.getItem('token') && sessionStorage.getItem('token') != "undefined") {
+        history.back();
+      }
+      else {
+        this.messageService.add({severity:'warn', summary:'Attention', detail:'User does not exists!'});
+        return;
+      }
+    }, 1000);
   }
 
 }
