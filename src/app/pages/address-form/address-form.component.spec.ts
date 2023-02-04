@@ -1,5 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormBuilder } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddressFormComponent } from './address-form.component';
 
 describe('AddressFormComponent', () => {
@@ -8,7 +11,9 @@ describe('AddressFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddressFormComponent ]
+      imports: [ HttpClientTestingModule ],
+      declarations: [ AddressFormComponent ],
+      providers: [DynamicDialogRef, DynamicDialogConfig, FormBuilder, MessageService]
     })
     .compileComponents();
 

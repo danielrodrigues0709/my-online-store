@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
         {name: 'Male', value: 'male'},
         {name: 'Female', value: 'female'}
       ];
-      this.selectedValues = this.user.policiesOptions;
+      this.selectedValues = this.user?.policiesOptions;
     }
 
   ngOnInit(): void {

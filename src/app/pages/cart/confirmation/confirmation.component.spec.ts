@@ -21,19 +21,19 @@ describe('ConfirmationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it("show render h1 with text", () => {
+  it("show render h2 with text", () => {
     const fixture = TestBed.createComponent(ConfirmationComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1')).toBeTruthy();
-    expect(compiled.querySelector('h1').innerHTML).toBe('Congratulations!');
+    expect(compiled.querySelector('h2')).toBeTruthy();
+    expect(compiled.querySelector('h2').innerHTML).toBe('Congratulations!');
   });
 
-  it("show render h4 with text", () => {
+  it("show render h5 with text", () => {
     const fixture = TestBed.createComponent(ConfirmationComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4')).toBeTruthy();
-    expect(compiled.querySelector('h4').innerHTML).toContain('Your purchase was successfully completed');
+    expect(compiled.querySelector('h5')).toBeTruthy();
+    expect(compiled.querySelector('h5').innerHTML).toContain('Your purchase was successfully completed');
   });
 });
