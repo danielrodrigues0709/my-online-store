@@ -25,14 +25,14 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render inputs", () => {
+  it("should render inputs", () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('input')).toBeTruthy();
   });
 
-  it("show render links", () => {
+  it("should render links", () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

@@ -66,7 +66,7 @@ export class UserComponent implements OnInit {
       gender: ['', Validators.required],
       phone: ['', Validators.required],
       birthDate: ['', Validators.required],
-      role: ['user'],
+      role: [false],
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirm_password: [null]

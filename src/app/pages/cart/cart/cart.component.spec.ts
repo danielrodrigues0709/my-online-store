@@ -25,21 +25,21 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render button", () => {
+  it("should render button", () => {
     const fixture = TestBed.createComponent(CartComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button')).toBeTruthy();
   });
 
-  it("show render h4", () => {
+  it("should render h4", () => {
     const fixture = TestBed.createComponent(CartComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h4')).toBeTruthy();
   });
 
-  it("show render h3", () => {
+  it("should render h3", () => {
     const fixture = TestBed.createComponent(CartComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

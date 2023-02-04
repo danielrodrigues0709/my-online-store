@@ -21,14 +21,14 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render img", () => {
+  it("should render img", () => {
     const fixture = TestBed.createComponent(HeaderComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('img')).toBeTruthy();
   });
 
-  it("show render p-avatar", () => {
+  it("should render p-avatar", () => {
     const fixture = TestBed.createComponent(HeaderComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

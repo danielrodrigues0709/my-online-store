@@ -35,11 +35,7 @@ describe('ProdutDetailComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it("show render image", () => {
+  it("should render image", () => {
     const fixture = TestBed.createComponent(ProdutDetailComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

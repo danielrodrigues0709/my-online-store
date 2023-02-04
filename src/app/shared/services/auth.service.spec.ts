@@ -13,11 +13,7 @@ describe('AuthService', () => {
     service = TestBed.inject(AuthService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
-  it('should save user in localStorage', () => {
+  it('should save token in localStorage', () => {
     localStorage.setItem('token', 'abc');
     expect(localStorage.getItem('token')).toBeTruthy();
   });

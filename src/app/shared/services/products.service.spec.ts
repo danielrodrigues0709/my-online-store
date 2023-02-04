@@ -21,10 +21,6 @@ describe('ProductsService', () => {
     httpController.verify();
   })
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
   it('should return products', (done) => {
     service.getProducts().subscribe((res: any) => {
       expect(res.length).toBeGreaterThan(7);

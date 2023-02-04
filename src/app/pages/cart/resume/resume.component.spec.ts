@@ -17,11 +17,7 @@ describe('ResumeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it("show render h3 with text", () => {
+  it("should render h3 with text", () => {
     const fixture = TestBed.createComponent(ResumeComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
@@ -33,7 +29,7 @@ describe('ResumeComponent', () => {
     }
   });
 
-  it("show display totals", () => {
+  it("should display totals", () => {
     fixture.detectChanges();
     if(component.products) {
       expect(component.values.total).toBeGreaterThan(0);

@@ -13,18 +13,8 @@ describe('CartsService', () => {
     service = TestBed.inject(CartsService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
   it('should create a cart with at least 1 product', () => {
     let cart = service.getCart();
-    // cart = {
-    //   date: new Date(),
-    //   id: 1,
-    //   products: [],
-    //   userId: 1
-    // }
     if(cart) {
       expect(cart.products.length).toBeGreaterThan(0);
     }

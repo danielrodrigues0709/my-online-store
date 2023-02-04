@@ -23,14 +23,14 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render p-tabView", () => {
+  it("should render p-tabView", () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('p-tabView')).toBeTruthy();
   });
 
-  it("show render p-tabPanel", () => {
+  it("should render p-tabPanel", () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

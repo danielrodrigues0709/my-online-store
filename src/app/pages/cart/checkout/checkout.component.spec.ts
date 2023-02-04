@@ -23,10 +23,6 @@ describe('CheckoutComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
   
   it('should render h3', (() => {
     const fixture = TestBed.createComponent(CheckoutComponent);

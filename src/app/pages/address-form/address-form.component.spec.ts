@@ -22,7 +22,10 @@ describe('AddressFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it("should render form", () => {
+    const fixture = TestBed.createComponent(AddressFormComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('form').innerHTML).toBeTruthy();
   });
 });
