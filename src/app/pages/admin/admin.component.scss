@@ -12,8 +12,24 @@
     max-width: 50px;
     max-height: 50px;
     margin-right: 20px;
+
+    &::ng-deep .p-avatar {
+        margin-left: 10px;
+    }
 }
 .icon {
     margin-left: 20px;
     cursor: pointer;
+}
+
+.btn-prod {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    .p-button {
+        width: 150px;
+        display: flex;
+        justify-content: center;
+    }
 }

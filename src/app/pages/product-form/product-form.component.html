@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="field col-8">
+            <label for="title">Title</label>
+            <input #title pInputText class="p-inputtext-sm" type="text" formControlName="title">
+        </div>
+        <div class="field col-4">
+            <label for="price">Price</label>
+            <input #price pInputText class="p-inputtext-sm" type="text" formControlName="price" (blur)="transformCurrency($event)">
+        </div>
+    </div>
+    <div class="row">
+        <div class="field col-12">
+            <label for="description">Description</label>
+            <textarea #description pInputTextarea formControlName="description"></textarea>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="field col-8">
+            <label for="image">Image URL</label>
+            <input #image pInputText class="p-inputtext-sm" type="text" formControlName="image">
+        </div>
+        <div class="field col-4">
+            <label for="category">Category</label>
+            <p-dropdown #category [options]="categories" optionLabel="name" formControlName="category" optionValue="value" appendTo="body"></p-dropdown>
+        </div>
+    </div>
+    
+    <div class="btn-save">
+        <button pButton pRipple type="button" class="p-button" (click)="submit()">Save</button>
+    </div>
+</form>

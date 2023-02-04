@@ -2,12 +2,16 @@
 <div class="tabview-custom">
     <p-tabView>
         <p-tabPanel header="Products" [selected]="true">
+            <div class="btn-prod">
+                <button pButton pRipple type="button" class="p-button" (click)="showModal()">Add Product</button>
+            </div>
             <ul *ngFor="let prod of products">
                 <li class="desc">
-                    <img src="{{prod.image}}" alt="img" class="thumbnail">
+                    <img *ngIf="prod.image" src="{{prod.image}}" alt="img" class="thumbnail">
+                    <p-avatar *ngIf="!prod.image" icon="pi pi-box" class="thumbnail"></p-avatar>
                     <strong>{{prod.title}} - {{prod.price | currency}}</strong>
                     <i class="icon pi pi-trash" (click)="removeProduct(prod)" pTooltip="Remove" tooltipPosition="bottom"></i>
-                    <i class="icon pi pi-pencil" (click)="editProduct(prod)" pTooltip="Edit" tooltipPosition="bottom"></i>
+                    <i class="icon pi pi-pencil" (click)="showModal(prod)" pTooltip="Edit" tooltipPosition="bottom"></i>
                 </li>
             </ul>
         </p-tabPanel>

@@ -34,6 +34,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { ProductFormComponent } from './pages/product-form/product-form.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
     CalendarModule,
     DynamicDialogModule,
     CheckboxModule,
-    InputSwitchModule
+    InputSwitchModule,
+    InputTextareaModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

@@ -43,13 +43,29 @@ export class ProductsService {
 
   updateProduct(product: any, id: number): Observable<any> {
     return this.http.patch(`${this.apiUrl}/${id}`, {
-      product
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      image: product.image,
+      category: product.category,
+      rating: {
+        rate: product.rating.rate,
+        count: product.rating.count
+      }
     });
   }
 
   saveProduct(product: any): Observable<any> {
     return this.http.post(this.apiUrl, {
-      product
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      image: product.image,
+      category: product.category,
+      rating: {
+        rate: product.rating.rate,
+        count: product.rating.count
+      }
     });
   }
 }
