@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="field col-12">
                         <label for="address">Address</label>
-                        <input #address pInputText class="p-inputtext-sm" type="text" formControlName="address">
+                        <p-dropdown #address [options]="addresses" optionLabel="name" formControlName="address" optionValue="value"></p-dropdown>
                     </div>
                 </div>
             </form>

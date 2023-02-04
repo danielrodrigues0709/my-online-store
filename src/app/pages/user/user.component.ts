@@ -46,9 +46,11 @@ export class UserComponent implements OnInit {
     this.form.patchValue(this.user);
     this.form.controls['confirm_password'].patchValue(this.user?.password);
     this.form.controls['birthDate'].patchValue(new Date(this.user?.birthDate));
-    this.user?.address.forEach(ad => {
-      this.addresses.push(ad);
-    });
+    if(this.user) {
+      this.user.address.forEach(ad => {
+        this.addresses.push(ad);
+      });
+    }
     this.addAddress();
   }
 
@@ -66,7 +68,7 @@ export class UserComponent implements OnInit {
       gender: ['', Validators.required],
       phone: ['', Validators.required],
       birthDate: ['', Validators.required],
-      role: [false],
+      admin: [false],
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirm_password: [null]

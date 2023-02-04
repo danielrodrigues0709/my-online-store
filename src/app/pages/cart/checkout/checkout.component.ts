@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit {
   values: any;
   nav: any;
   allowGoBack: boolean = false;
-  addresses: Address[] = [];
+  addresses: any[] = [];
 
   constructor(
     private router: Router,
@@ -47,9 +47,14 @@ export class CheckoutComponent implements OnInit {
 
   getUserAddresses(): void {
     let userStr = localStorage.getItem('userData');
-    if(userStr)
-    this.addresses.push(JSON.parse(userStr));
-    console.log(this.addresses)
+    if(userStr) {
+      JSON.parse(userStr).address.forEach((ad: any, index: number) => {
+        this.addresses.push({
+          name: `${ad.address}, ${ad.city}, ${ad.state}, ${ad.country} - Postal Code: ${ad.postalCode}`,
+          value: index
+        });
+      })
+    }
   }
   
   createForm(): void {

@@ -18,12 +18,12 @@ export class AdminGuard implements CanActivate {
       let userDataStr = localStorage.getItem('userData');
       let userData = {
         id: null,
-        role: null
+        admin: null
       };
 
       if(userDataStr != null) userData = JSON.parse(userDataStr);
       
-      if(userData.id && userData.role == true) {
+      if(userData.id && userData.admin == true) {
         return true;
       }
       else {

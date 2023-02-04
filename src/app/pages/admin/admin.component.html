@@ -28,7 +28,7 @@
                         <strong>E-mail: {{user.email}} - </strong>
                         <strong>Is Admin?</strong>
                     </div>
-                    <p-inputSwitch [(ngModel)]="user.role" (onChange)="onRoleChange($event, user)"></p-inputSwitch>
+                    <p-inputSwitch [(ngModel)]="user.admin" (onChange)="onRoleChange($event, user)"></p-inputSwitch>
                 </li>
             </ul>
         </p-tabPanel>

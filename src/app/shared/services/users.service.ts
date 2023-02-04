@@ -37,7 +37,7 @@ export class UsersService {
       gender: user.gender,
       phone: user.phone,
       birthDate: user.birthDate,
-      role: user.role,
+      admin: user.admin,
       address: user.address,
       policiesOptions: user.policiesOptions
     });
@@ -53,7 +53,7 @@ export class UsersService {
       gender: user.gender,
       phone: user.phone,
       birthDate: user.birthDate,
-      role: user.role,
+      admin: user.admin,
       address: user.address,
       policiesOptions: user.policiesOptions
     });

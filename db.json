@@ -182,7 +182,7 @@
       "password": "9uQFF1Lh",
       "birthDate": "2000-12-20",
       "image": "https://robohash.org/hicveldicta.png",
-      "role": true,
+      "admin": true,
       "token": "xptz",
       "policiesOptions": [
         "privacy",
@@ -215,7 +215,7 @@
       "password": "CQutx25i8r",
       "birthDate": "2003-08-02",
       "image": "https://robohash.org/doloremquesintcorrupti.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -244,7 +244,7 @@
       "password": "OWsTbMUgFc",
       "birthDate": "1992-12-30",
       "image": "https://robohash.org/consequunturautconsequatur.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -273,7 +273,7 @@
       "password": "sRQxjPfdS",
       "birthDate": "1969-01-16",
       "image": "https://robohash.org/facilisdignissimosdolore.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -302,7 +302,7 @@
       "password": "aUTdmmmbH",
       "birthDate": "1968-11-03",
       "image": "https://robohash.org/adverovelit.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -331,7 +331,7 @@
       "password": "zY1nE46Zm",
       "birthDate": "1969-07-21",
       "image": "https://robohash.org/laboriosamfacilisrem.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -360,7 +360,7 @@
       "password": "YVmhktgYVS",
       "birthDate": "1982-02-21",
       "image": "https://robohash.org/cupiditatererumquos.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -389,7 +389,7 @@
       "password": "MWwlaeWcOoF6",
       "birthDate": "1964-08-24",
       "image": "https://robohash.org/quiaharumsapiente.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -417,7 +417,7 @@
       "password": "HTQxxXV9Bq4",
       "birthDate": "1971-03-11",
       "image": "https://robohash.org/excepturiiuremolestiae.png",
-      "role": false,
+      "admin": false,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -446,7 +446,7 @@
       "password": "i0xzpX",
       "birthDate": "1958-08-11",
       "image": "https://robohash.org/aliquamcumqueiure.png",
-      "role": true,
+      "admin": true,
       "token": "xptz",
       "policiesOptions": [],
       "address": [
@@ -472,7 +472,7 @@
       "gender": "male",
       "phone": "+553171332526",
       "birthDate": "1992-09-05",
-      "role": false,
+      "admin": false,
       "policiesOptions": [
         "privacy",
         "news"
@@ -498,7 +498,7 @@
       "gender": "female",
       "phone": "+553193051078",
       "birthDate": "1996-11-25",
-      "role": false,
+      "admin": false,
       "policiesOptions": [],
       "address": [
         {
@@ -521,7 +521,7 @@
       "gender": "sdfsdf",
       "phone": "sdfsdf",
       "birthDate": "dsf",
-      "role": false,
+      "admin": false,
       "policiesOptions": [],
       "address": [],
       "id": 13

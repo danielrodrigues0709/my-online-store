@@ -17,7 +17,7 @@ export class AdminComponent implements OnInit {
 
   products: Product[] = [];
   users: User[] = [];
-  role!: boolean;
+  admin!: boolean;
   ref!: DynamicDialogRef;
 
   constructor(
@@ -74,7 +74,7 @@ export class AdminComponent implements OnInit {
   
   onRoleChange(event: any, userSelected: User): void {
     let user = userSelected;
-    user.role = event.checked;
+    user.admin = event.checked;
     this.usersService.updateUser(user, user.id).subscribe(() => {});
   }
 
