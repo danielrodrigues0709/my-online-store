@@ -38,11 +38,11 @@ export class ProductsService {
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(this.apiUrl + id);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
   updateProduct(product: any, id: number): Observable<any> {
-    return this.http.patch(this.apiUrl + id, {
+    return this.http.patch(`${this.apiUrl}/${id}`, {
       product
     });
   }

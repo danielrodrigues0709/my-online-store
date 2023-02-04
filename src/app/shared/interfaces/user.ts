@@ -12,5 +12,6 @@ export interface User {
     birthDate: string,
     role: boolean,
     address: Address[],
-    policiesOptions: []
+    policiesOptions: [],
+    image: string
 }

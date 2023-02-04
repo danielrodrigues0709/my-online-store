@@ -33,6 +33,7 @@ import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { CheckboxModule } from 'primeng/checkbox';
     TableModule,
     CalendarModule,
     DynamicDialogModule,
-    CheckboxModule
+    CheckboxModule,
+    InputSwitchModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

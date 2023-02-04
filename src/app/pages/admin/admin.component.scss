@@ -1,0 +1,19 @@
+.tabview-custom {
+    padding-bottom: 50px !important;
+
+    .desc {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.thumbnail {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 20px;
+}
+.icon {
+    margin-left: 20px;
+    cursor: pointer;
+}
