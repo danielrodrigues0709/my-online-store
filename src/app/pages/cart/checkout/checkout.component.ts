@@ -13,7 +13,7 @@ import { CartsService } from 'src/app/shared/services/carts.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  adressForm!: FormGroup;
+  addressForm!: FormGroup;
   paymentForm!: FormGroup;
   cart!: Cart;
   products: { product: Product; quantity: any; }[] = [];
@@ -43,8 +43,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   createForm(): void {
-    this.adressForm = this.formBuilder.group({
-      adress: ['', Validators.required],
+    this.addressForm = this.formBuilder.group({
+      address: ['', Validators.required],
       number: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', Validators.required],
@@ -76,7 +76,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   submit(): void {
-    if(this.adressForm.invalid || this.paymentForm.invalid) {
+    if(this.addressForm.invalid || this.paymentForm.invalid) {
       this.messageService.add({severity:'warn', summary:'Attention', detail:'Please fill out the form!'});
       return;
     }

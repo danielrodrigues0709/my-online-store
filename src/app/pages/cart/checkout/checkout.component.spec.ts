@@ -35,6 +35,6 @@ describe('CheckoutComponent', () => {
     const fixture = TestBed.createComponent(CheckoutComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h3').textContent).toContain('Adress Information');
+    expect(compiled.querySelector('h3').textContent).toContain('Address Information');
   }));
 });
