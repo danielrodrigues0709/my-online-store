@@ -63,10 +63,10 @@
                                 <th>Address line 1</th>
                                 <th>Address line 2</th>
                                 <th>City</th>
-                                <th>State</th>
-                                <th>Country</th>
-                                <th>Postal Code</th>
-                                <th>Actions</th>
+                                <th class="align-center">State</th>
+                                <th class="align-center">Country</th>
+                                <th class="align-center">Postal Code</th>
+                                <th class="align-center">Actions</th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-address>
@@ -74,10 +74,10 @@
                                 <td>{{address.address}}</td>
                                 <td>{{address.address2}}</td>
                                 <td>{{address.city}}</td>
-                                <td>{{address.state}}</td>
-                                <td>{{address.country}}</td>
-                                <td>{{address.postalCode}}</td>
-                                <td>
+                                <td class="align-center">{{address.state}}</td>
+                                <td class="align-center">{{address.country}}</td>
+                                <td class="align-center">{{address.postalCode}}</td>
+                                <td class="align-center">
                                     <button
                                         pButton
                                         pRipple
