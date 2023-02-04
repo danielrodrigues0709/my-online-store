@@ -23,11 +23,15 @@ export class AdminGuard implements CanActivate {
 
       if(userDataStr != null) userData = JSON.parse(userDataStr);
       
-      if(userData.id && userData.admin == true) {
-        return true;
+      if(userData.id) {
+        if(userData.admin == true) {
+          return true;
+        }
+        this.router.navigate(['/home']);
+        return false;
       }
       else {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/login']);
         return false;
       }
   }
