@@ -4,34 +4,12 @@
 <div class="resume">
     <div class="forms">
         <div class="p-fluid grid formgrid">
-            <h3 class="title">Adress Information</h3>
-            <form [formGroup]="adressForm">
+            <h3 class="title">Address Information</h3>
+            <form [formGroup]="addressForm">
                 <div class="row">
-                    <div class="field col-8">
-                        <label for="adress">Adress</label>
-                        <input #adress pInputText class="p-inputtext-sm" type="text" formControlName="adress">
-                    </div>
-                    <div class="field col-4">
-                        <label for="number">Number</label>
-                        <input #number pInputText class="p-inputtext-sm" type="text" formControlName="number">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="field col-3">
-                        <label for="city">City</label>
-                        <input #city pInputText class="p-inputtext-sm" type="text" formControlName="city">
-                    </div>
-                    <div class="field col-3">
-                        <label for="state">State</label>
-                        <input #state pInputText class="p-inputtext-sm" type="text" formControlName="state">
-                    </div>
-                    <div class="field col-3">
-                        <label for="country">Country</label>
-                        <input #country pInputText class="p-inputtext-sm" type="text" formControlName="country">
-                    </div>
-                    <div class="col">
-                        <label for="zip_code">Zip Code</label>
-                        <input #zip_code pInputText class="p-inputtext-sm" type="text" formControlName="zip_code">
+                    <div class="field col-12">
+                        <label for="address">Address</label>
+                        <p-dropdown #address [options]="addresses" optionLabel="name" formControlName="address" optionValue="value"></p-dropdown>
                     </div>
                 </div>
             </form>

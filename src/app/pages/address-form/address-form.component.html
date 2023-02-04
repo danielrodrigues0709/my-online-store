@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="field col-4">
+            <label for="postalCode">Postal Code</label>
+            <input #postalCode pInputText class="p-inputtext-sm" type="text" formControlName="postalCode" (keyup)="onChangePostalCode($event)">
+        </div>
+        <div class="field col-4">
+            <label for="address1">Address line 1</label>
+            <input #address1 pInputText class="p-inputtext-sm" type="text" formControlName="address">
+        </div>
+        <div class="field col-4">
+            <label for="address2">Address line 2</label>
+            <input #address2 pInputText class="p-inputtext-sm" type="text" formControlName="address2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="field col-4">
+            <label for="city">City</label>
+            <input #city pInputText class="p-inputtext-sm" type="text" formControlName="city">
+        </div>
+        <div class="field col-4">
+            <label for="state">State</label>
+            <input #state pInputText class="p-inputtext-sm" type="text" formControlName="state">
+        </div>
+        <div class="field col-4">
+            <label for="country">Country</label>
+            <input #country pInputText class="p-inputtext-sm" type="text" formControlName="country">
+        </div>
+    </div>
+    
+    <div class="btn-save">
+        <button pButton pRipple type="button" class="p-button" (click)="submit()">Save</button>
+    </div>
+</form>

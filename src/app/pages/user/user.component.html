@@ -1,1 +1,133 @@
-<p>user works!</p>
+<div class="nav-bar">
+    <button pButton pRipple type="button" icon="pi pi-angle-left" class="p-button-rounded btn-nav" (click)="goBack()">Go back</button>
+</div>
+<div class="info">
+    <div class="forms">
+        <div class="p-fluid grid formgrid">
+            <h3 class="title">My Account</h3>
+            <p-accordion>
+                <form [formGroup]="form">
+                    <p-accordionTab header="Personal Information" [selected]="true">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="firstName">First Name</label>
+                                <input #firstName pInputText class="p-inputtext-sm" type="text" formControlName="firstName">
+                            </div>
+                            <div class="field col-4">
+                                <label for="lastName">Last Name</label>
+                                <input #lastName pInputText class="p-inputtext-sm" type="text" formControlName="lastName">
+                            </div>
+                            <div class="field col-4">
+                                <label for="email">E-mail</label>
+                                <input #email pInputText class="p-inputtext-sm" type="email" formControlName="email">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="gender">Gender</label>
+                                <p-dropdown #gender [options]="genders" optionLabel="name" formControlName="gender" optionValue="value"></p-dropdown>
+                            </div>
+                            <div class="field col-4">
+                                <label for="phone">Phone Number</label>
+                                <input #phone pInputText class="p-inputtext-sm" type="text" formControlName="phone">
+                            </div>
+                            <div class="field col-4">
+                                <label for="birthDate">Birth Date</label>
+                                <p-calendar #birthDate [showIcon]="true" inputId="icon" formControlName="birthDate"></p-calendar>
+                            </div>
+                        </div>
+                    </p-accordionTab>
+
+                    <p-accordionTab header="Account Information">
+                        <div class="row">
+                            <div class="col-4">
+                                <label for="username">Username</label>
+                                <input #username pInputText class="p-inputtext-sm" type="text" formControlName="username">
+                            </div>
+                            <div class="field col-4">
+                                <label for="password">Password</label>
+                                <input #password pInputText class="p-inputtext-sm" type="password" formControlName="password">
+                            </div>
+                            <div class="field col-4">
+                                <label for="confirm_password">Confirm Password</label>
+                                <input #confirm_password pInputText class="p-inputtext-sm" type="password" formControlName="confirm_password">
+                            </div>
+                        </div>
+                    </p-accordionTab>
+                </form>
+
+                <p-accordionTab header="Address Information">
+                    <p-table [value]="addresses">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Address line 1</th>
+                                <th>Address line 2</th>
+                                <th>City</th>
+                                <th class="align-center">State</th>
+                                <th class="align-center">Country</th>
+                                <th class="align-center">Postal Code</th>
+                                <th class="align-center">Actions</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-address>
+                            <tr>
+                                <td>{{address.address}}</td>
+                                <td>{{address.address2}}</td>
+                                <td>{{address.city}}</td>
+                                <td class="align-center">{{address.state}}</td>
+                                <td class="align-center">{{address.country}}</td>
+                                <td class="align-center">{{address.postalCode}}</td>
+                                <td class="align-center">
+                                    <button
+                                        pButton
+                                        pRipple
+                                        type="button"
+                                        icon="pi pi-trash"
+                                        pTooltip="Remove"
+                                        tooltipPosition="bottom"
+                                        class="p-button-sm p-button-rounded p-button-text"
+                                        (click)="delete(address)">
+                                    </button>
+                                    <button
+                                        pButton
+                                        pRipple
+                                        type="button"
+                                        icon="pi pi-pencil"
+                                        pTooltip="Edit"
+                                        tooltipPosition="bottom"
+                                        class="p-button-sm p-button-rounded p-button-text"
+                                        (click)="showModal(address)">
+                                    </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+
+                    <div class="btn-address">
+                        <button pButton pRipple type="button" class="p-button" (click)="showModal()">Add Address</button>
+                    </div>
+                </p-accordionTab>
+            </p-accordion>
+
+            <div class="policies">
+                <span>
+                    <p-checkbox name="groupname" value="privacy" [(ngModel)]="selectedValues">
+                    </p-checkbox> I have read and accept the <a [routerLink]="['/my-account']">privacy policy</a>.
+                </span>
+                <span>
+                    <p-checkbox name="groupname" value="news" [(ngModel)]="selectedValues">
+                    </p-checkbox> I agree to recieve newsletters from LogoIpsum.
+                </span>
+                <span>
+                    <p-checkbox name="groupname" value="data" [(ngModel)]="selectedValues">
+                    </p-checkbox> I accept to share data to enable essential site functionality, as well as marketing, personalization, and analytics.
+                </span>
+            </div>
+
+            <div class="btn-save">
+                <button pButton pRipple type="button" class="p-button" (click)="submit()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CheckoutComponent } from './checkout.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { CalendarModule } from 'primeng/calendar';
 
 describe('CheckoutComponent', () => {
@@ -15,17 +15,13 @@ describe('CheckoutComponent', () => {
         CalendarModule
       ],
       declarations: [ CheckoutComponent ],
-      providers: [ConfirmationService]
+      providers: [ConfirmationService, MessageService]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(CheckoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
   
   it('should render h3', (() => {
@@ -39,6 +35,6 @@ describe('CheckoutComponent', () => {
     const fixture = TestBed.createComponent(CheckoutComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h3').textContent).toContain('Adress Information');
+    expect(compiled.querySelector('h3').textContent).toContain('Address Information');
   }));
 });

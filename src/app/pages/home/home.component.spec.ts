@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductsService } from 'src/app/shared/services/products.service';
 
@@ -11,10 +11,10 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,
+        HttpClientTestingModule,
       ],
       declarations: [ HomeComponent ],
-      providers: [HttpClient, ProductsService]
+      providers: [ProductsService]
     })
     .compileComponents();
 
@@ -23,14 +23,14 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render p-tabView", () => {
+  it("should render p-tabView", () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('p-tabView')).toBeTruthy();
   });
 
-  it("show render p-tabPanel", () => {
+  it("should render p-tabPanel", () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

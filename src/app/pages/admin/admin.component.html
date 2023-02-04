@@ -1,1 +1,36 @@
-<p>admin works!</p>
+<div class="nav-bar"></div>
+<div class="tabview-custom">
+    <p-tabView>
+        <p-tabPanel header="Products" [selected]="true">
+            <div class="btn-prod">
+                <button pButton pRipple type="button" class="p-button" (click)="showModal()">Add Product</button>
+            </div>
+            <ul *ngFor="let prod of products">
+                <li class="desc">
+                    <img *ngIf="prod.image" src="{{prod.image}}" alt="img" class="thumbnail">
+                    <p-avatar *ngIf="!prod.image" icon="pi pi-box" class="thumbnail"></p-avatar>
+                    <strong>{{prod.title}} - {{prod.price | currency}}</strong>
+                    <i class="icon pi pi-trash" (click)="removeProduct(prod)" pTooltip="Remove" tooltipPosition="bottom"></i>
+                    <i class="icon pi pi-pencil" (click)="showModal(prod)" pTooltip="Edit" tooltipPosition="bottom"></i>
+                </li>
+            </ul>
+        </p-tabPanel>
+        <p-tabPanel header="Users">
+            <ul *ngFor="let user of users">
+                <li class="desc">
+                    <p-avatar *ngIf="!user?.image" icon="pi pi-user" shape="circle" class="avatar"></p-avatar>
+                    <p-avatar *ngIf="user?.image" shape="circle" class="avatar">
+                        <img src="{{user.image}}" alt="">
+                    </p-avatar>
+                    <div class="col-auto">
+                        <strong>Username: {{user.username}} - </strong>
+                        <strong>Name: {{user.firstName}} {{user.lastName}} - </strong>
+                        <strong>E-mail: {{user.email}} - </strong>
+                        <strong>Is Admin?</strong>
+                    </div>
+                    <p-inputSwitch [(ngModel)]="user.admin" (onChange)="onRoleChange($event, user)"></p-inputSwitch>
+                </li>
+            </ul>
+        </p-tabPanel>
+    </p-tabView>
+</div>

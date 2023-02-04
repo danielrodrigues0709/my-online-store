@@ -17,6 +17,7 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { CheckoutGuard } from './checkout/checkout.guard';
 import { TooltipModule } from 'primeng/tooltip';
+import { DropdownModule } from 'primeng/dropdown';
 
 const routes: Routes = [
   { path: '', component: CartComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
     CalendarModule,
     ConfirmDialogModule,
     TooltipModule,
+    DropdownModule,
     CommonModule
   ],
   providers: [MessageService, ConfirmationService],

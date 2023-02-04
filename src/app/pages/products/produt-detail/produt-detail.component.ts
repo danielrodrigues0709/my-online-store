@@ -17,7 +17,7 @@ import { takeUntil } from 'rxjs/operators';
 export class ProdutDetailComponent implements OnInit, OnDestroy {
 
   protected ngUnsubscribe: Subject<any> = new Subject();
-  id!: string;
+  id!: number;
   form!: FormGroup;
   product!: Product;
   cart!: Cart;
@@ -35,7 +35,7 @@ export class ProdutDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts(this.id).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
+    this.productService.getProductById(this.id).pipe(takeUntil(this.ngUnsubscribe)).subscribe(res => {
       this.product = res;
       this.form.get('rating')?.patchValue(this.product.rating.rate);
     });

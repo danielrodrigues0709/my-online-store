@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   
   constructor(
+    private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private messageService: MessageService
@@ -32,10 +34,12 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     if (!this.form.valid) return;
-    this.authService.getUserData(this.form.getRawValue());
+    this.authService.getUserData(this.form.getRawValue()).subscribe(res => {
+      this.authService.setUserData(res[0]);
+    });
     setTimeout(() => {
-      if(sessionStorage.getItem('token') && sessionStorage.getItem('token') != "undefined") {
-        history.back();
+      if(localStorage.getItem('token') && localStorage.getItem('token') != "undefined") {
+        this.router.navigate(['/home']);
       }
       else {
         this.messageService.add({severity:'warn', summary:'Attention', detail:'User does not exists!'});

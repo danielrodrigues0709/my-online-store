@@ -21,10 +21,6 @@ describe('ProductsService', () => {
     httpController.verify();
   })
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-
   it('should return products', (done) => {
     service.getProducts().subscribe((res: any) => {
       expect(res.length).toBeGreaterThan(7);
@@ -54,7 +50,7 @@ describe('ProductsService', () => {
       done();
       });
     
-    const http = httpController.expectOne(service.apiUrl+id)
+    const http = httpController.expectOne(`${service.apiUrl}/${id}`)
     expect(http.request.method).toBe("PATCH");
     http.flush(productsList)
   });
@@ -65,7 +61,7 @@ describe('ProductsService', () => {
       done();
       });
     
-    const http = httpController.expectOne(service.apiUrl+id)
+    const http = httpController.expectOne(`${service.apiUrl}/${id}`)
     expect(http.request.method).toBe("DELETE");
     http.flush(productsList)
   });

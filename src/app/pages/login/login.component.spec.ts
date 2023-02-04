@@ -1,6 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 import { LoginComponent } from './login.component';
 
@@ -11,10 +12,11 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,
+        HttpClientTestingModule,
         ReactiveFormsModule
       ],
-      declarations: [ LoginComponent ]
+      declarations: [ LoginComponent ],
+      providers: [ MessageService  ]
     })
     .compileComponents();
 
@@ -23,14 +25,14 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render inputs", () => {
+  it("should render inputs", () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('input')).toBeTruthy();
   });
 
-  it("show render links", () => {
+  it("should render links", () => {
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

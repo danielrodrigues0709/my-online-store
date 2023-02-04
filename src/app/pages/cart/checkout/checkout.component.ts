@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Address } from 'src/app/shared/interfaces/address';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
@@ -13,13 +14,14 @@ import { CartsService } from 'src/app/shared/services/carts.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  adressForm!: FormGroup;
+  addressForm!: FormGroup;
   paymentForm!: FormGroup;
   cart!: Cart;
   products: { product: Product; quantity: any; }[] = [];
   values: any;
   nav: any;
   allowGoBack: boolean = false;
+  addresses: any[] = [];
 
   constructor(
     private router: Router,
@@ -40,16 +42,24 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
     this.products = this.cart?.products;
+    this.getUserAddresses();
   }
 
+  getUserAddresses(): void {
+    let userStr = localStorage.getItem('userData');
+    if(userStr) {
+      JSON.parse(userStr).address.forEach((ad: any, index: number) => {
+        this.addresses.push({
+          name: `${ad.address}, ${ad.city}, ${ad.state}, ${ad.country} - Postal Code: ${ad.postalCode}`,
+          value: index
+        });
+      })
+    }
+  }
+  
   createForm(): void {
-    this.adressForm = this.formBuilder.group({
-      adress: ['', Validators.required],
-      number: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      country: ['', Validators.required],
-      zip_code: ['', Validators.required],
+    this.addressForm = this.formBuilder.group({
+      address: [0, Validators.required],
     });
     this.paymentForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -76,7 +86,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   submit(): void {
-    if(this.adressForm.invalid || this.paymentForm.invalid) {
+    if(this.addressForm.invalid || this.paymentForm.invalid) {
       this.messageService.add({severity:'warn', summary:'Attention', detail:'Please fill out the form!'});
       return;
     }

@@ -12,5 +12,5 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 window.addEventListener('onbeforeload', () => {
-  sessionStorage.clear();
+  localStorage.clear();
 });

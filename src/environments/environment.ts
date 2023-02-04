@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://fakestoreapi.com/',
-  authUrl: 'https://dummyjson.com/auth/'
+  apiUrl: 'http://localhost:3000/',
+  zipCodeApi: 'https://app.zipcodebase.com/api/v1/',
+  apikey: '1ab087d0-a1e5-11ed-81f2-75ee129c253f'
 };
 
 /*

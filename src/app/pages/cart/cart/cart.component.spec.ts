@@ -1,9 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MessageService } from 'primeng/api';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { CartComponent } from './cart.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -12,7 +11,7 @@ describe('CartComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,
+        HttpClientTestingModule,
         ReactiveFormsModule
       ],
       declarations: [ CartComponent ],
@@ -25,21 +24,21 @@ describe('CartComponent', () => {
     fixture.detectChanges();
   });
 
-  it("show render button", () => {
+  it("should render button", () => {
     const fixture = TestBed.createComponent(CartComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button')).toBeTruthy();
   });
 
-  it("show render h4", () => {
+  it("should render h4", () => {
     const fixture = TestBed.createComponent(CartComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h4')).toBeTruthy();
   });
 
-  it("show render h3", () => {
+  it("should render h3", () => {
     const fixture = TestBed.createComponent(CartComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
