@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Address } from 'src/app/shared/interfaces/address';
 import { Cart } from 'src/app/shared/interfaces/cart';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartsService } from 'src/app/shared/services/carts.service';
@@ -20,6 +21,7 @@ export class CheckoutComponent implements OnInit {
   values: any;
   nav: any;
   allowGoBack: boolean = false;
+  addresses: Address[] = [];
 
   constructor(
     private router: Router,
@@ -40,16 +42,19 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
     this.products = this.cart?.products;
+    this.getUserAddresses();
   }
 
+  getUserAddresses(): void {
+    let userStr = localStorage.getItem('userData');
+    if(userStr)
+    this.addresses.push(JSON.parse(userStr));
+    console.log(this.addresses)
+  }
+  
   createForm(): void {
     this.addressForm = this.formBuilder.group({
       address: ['', Validators.required],
-      number: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      country: ['', Validators.required],
-      zip_code: ['', Validators.required],
     });
     this.paymentForm = this.formBuilder.group({
       name: ['', Validators.required],
