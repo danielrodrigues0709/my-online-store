@@ -7,7 +7,7 @@
             <h3 class="title">My Account</h3>
             <p-accordion>
                 <form [formGroup]="form">
-                    <p-accordionTab header="Personal Information">
+                    <p-accordionTab header="Personal Information" [selected]="true">
                         <div class="row">
                             <div class="col-4">
                                 <label for="firstName">First Name</label>
@@ -108,7 +108,22 @@
                     </div>
                 </p-accordionTab>
             </p-accordion>
-            
+
+            <div class="policies">
+                <span>
+                    <p-checkbox name="groupname" value="privacy" [(ngModel)]="selectedValues">
+                    </p-checkbox> I have read and accept the <a [routerLink]="['/my-account']">privacy policy</a>.
+                </span>
+                <span>
+                    <p-checkbox name="groupname" value="news" [(ngModel)]="selectedValues">
+                    </p-checkbox> I agree to recieve newsletters from LogoIpsum.
+                </span>
+                <span>
+                    <p-checkbox name="groupname" value="data" [(ngModel)]="selectedValues">
+                    </p-checkbox> I accept to share data to enable essential site functionality, as well as marketing, personalization, and analytics.
+                </span>
+            </div>
+
             <div class="btn-save">
                 <button pButton pRipple type="button" class="p-button" (click)="submit()">Save</button>
             </div>

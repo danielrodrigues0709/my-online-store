@@ -21,7 +21,8 @@ export class UserComponent implements OnInit {
   user!: User;
   addresses: Address[] = [];
   ref!: DynamicDialogRef;
-  genders: any[] = []
+  genders: any[] = [];
+  selectedValues: string[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +39,7 @@ export class UserComponent implements OnInit {
         {name: 'Male', value: 'male'},
         {name: 'Female', value: 'female'}
       ];
+      this.selectedValues = this.user.policiesOptions;
     }
 
   ngOnInit(): void {
@@ -111,11 +113,16 @@ export class UserComponent implements OnInit {
       this.messageService.add({severity:'warn', summary:'Attention', detail:'Passwords do not match!'});
       return;
     }
+    if(!this.selectedValues.includes('privacy')) {
+      this.messageService.add({severity:'warn', summary:'Attention', detail:'You must read and accept the privacy policy!'});
+      return;
+    }
     let formValue = this.form.value;
     formValue = {
       ...this.form.value,
       birthDate: this.datepipe.transform(this.form.get('birthDate')?.value, 'yyyy-MM-dd'),
-      address: this.addresses
+      address: this.addresses,
+      policiesOptions: this.selectedValues
     }
     if(this.user) {
       this.usersService.updateUser(formValue, this.user.id).subscribe(res => {

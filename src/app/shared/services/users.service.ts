@@ -38,7 +38,8 @@ export class UsersService {
       phone: user.phone,
       birthDate: user.birthDate,
       role: user.role,
-      address: user.address
+      address: user.address,
+      policiesOptions: user.policiesOptions
     });
   }
 
@@ -53,7 +54,8 @@ export class UsersService {
       phone: user.phone,
       birthDate: user.birthDate,
       role: user.role,
-      address: user.address
+      address: user.address,
+      policiesOptions: user.policiesOptions
     });
   }
 

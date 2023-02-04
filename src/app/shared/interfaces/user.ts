@@ -10,6 +10,7 @@ export interface User {
     gender: string,
     phone: number,
     birthDate: string,
-    role: string,
-    address: Address[]
+    role: boolean,
+    address: Address[],
+    policiesOptions: []
 }

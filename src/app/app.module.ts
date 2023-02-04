@@ -32,6 +32,7 @@ import { AddressFormComponent } from './pages/address-form/address-form.componen
 import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CalendarModule } from 'primeng/calendar';
     AccordionModule,
     TableModule,
     CalendarModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    CheckboxModule
   ],
   providers: [HttpClient, MessageService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

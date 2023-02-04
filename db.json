@@ -1,4 +1,5 @@
-{   "products": [
+{
+  "products": [
     {
       "id": 5,
       "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
@@ -179,10 +180,15 @@
       "phone": "+63 791 675 8914",
       "username": "atuny0",
       "password": "9uQFF1Lh",
-      "birthDate": "2000-12-25",
+      "birthDate": "2000-12-20",
       "image": "https://robohash.org/hicveldicta.png",
-      "role": "admin",
+      "role": true,
       "token": "xptz",
+      "policiesOptions": [
+        "privacy",
+        "data",
+        "news"
+      ],
       "address": [
         {
           "address": "1745 T Street Southeast",
@@ -209,8 +215,9 @@
       "password": "CQutx25i8r",
       "birthDate": "2003-08-02",
       "image": "https://robohash.org/doloremquesintcorrupti.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "6007 Applegate Lane",
@@ -237,8 +244,9 @@
       "password": "OWsTbMUgFc",
       "birthDate": "1992-12-30",
       "image": "https://robohash.org/consequunturautconsequatur.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "560 Penstock Drive",
@@ -265,8 +273,9 @@
       "password": "sRQxjPfdS",
       "birthDate": "1969-01-16",
       "image": "https://robohash.org/facilisdignissimosdolore.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "150 Carter Street",
@@ -293,8 +302,9 @@
       "password": "aUTdmmmbH",
       "birthDate": "1968-11-03",
       "image": "https://robohash.org/adverovelit.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "2721 Lindsay Avenue",
@@ -321,8 +331,9 @@
       "password": "zY1nE46Zm",
       "birthDate": "1969-07-21",
       "image": "https://robohash.org/laboriosamfacilisrem.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "18 Densmore Drive",
@@ -349,8 +360,9 @@
       "password": "YVmhktgYVS",
       "birthDate": "1982-02-21",
       "image": "https://robohash.org/cupiditatererumquos.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "637 Britannia Drive",
@@ -377,8 +389,9 @@
       "password": "MWwlaeWcOoF6",
       "birthDate": "1964-08-24",
       "image": "https://robohash.org/quiaharumsapiente.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "5601 West Crocus Drive",
@@ -404,8 +417,9 @@
       "password": "HTQxxXV9Bq4",
       "birthDate": "1971-03-11",
       "image": "https://robohash.org/excepturiiuremolestiae.png",
-      "role": "user",
+      "role": false,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "5403 Illinois Avenue",
@@ -432,8 +446,9 @@
       "password": "i0xzpX",
       "birthDate": "1958-08-11",
       "image": "https://robohash.org/aliquamcumqueiure.png",
-      "role": "admin",
+      "role": true,
       "token": "xptz",
+      "policiesOptions": [],
       "address": [
         {
           "address": "8821 West Myrtle Avenue",
@@ -447,6 +462,69 @@
           "country": "US"
         }
       ]
+    },
+    {
+      "email": "daniel@mail.com",
+      "username": "danrod",
+      "password": "07091992",
+      "firstName": "Daniel",
+      "lastName": "Rodrigues",
+      "gender": "male",
+      "phone": "+553171332526",
+      "birthDate": "1992-09-05",
+      "role": false,
+      "policiesOptions": [
+        "privacy",
+        "news"
+      ],
+      "address": [
+        {
+          "postalCode": "32920",
+          "address": "123 Road 1",
+          "address2": "",
+          "city": "Cape Canaveral",
+          "state": "FL",
+          "country": "US"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "email": "sarah@mail.com",
+      "username": "slc",
+      "password": "03121996",
+      "firstName": "Sarah",
+      "lastName": "Leticia",
+      "gender": "female",
+      "phone": "+553193051078",
+      "birthDate": "1996-11-25",
+      "role": false,
+      "policiesOptions": [],
+      "address": [
+        {
+          "postalCode": "20020",
+          "address": "321 AV One",
+          "address2": "",
+          "city": "Washington",
+          "state": "DC",
+          "country": "US"
+        }
+      ],
+      "id": 12
+    },
+    {
+      "email": "ssfsdf@dsf.dsad",
+      "username": "sdf",
+      "password": "sdf",
+      "firstName": "dsfsdf",
+      "lastName": "sdfsd",
+      "gender": "sdfsdf",
+      "phone": "sdfsdf",
+      "birthDate": "dsf",
+      "role": false,
+      "policiesOptions": [],
+      "address": [],
+      "id": 13
     }
   ]
 }
