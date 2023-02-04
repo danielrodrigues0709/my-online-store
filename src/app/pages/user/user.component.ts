@@ -90,12 +90,14 @@ export class UserComponent implements OnInit {
         }
     })
     this.ref.onClose.subscribe((addressData: Address) => {
-      if(element) {
-        let item = this.addresses.findIndex(ad => ad == element);
-        this.addresses[item] = addressData;
-      }
-      else {
-        this.usersService.setAddress(addressData);
+      if(addressData) {
+        if(element) {
+          let item = this.addresses.findIndex(ad => ad == element);
+          this.addresses[item] = addressData;
+        }
+        else {
+          this.usersService.setAddress(addressData);
+        }
       }
     });
   }
