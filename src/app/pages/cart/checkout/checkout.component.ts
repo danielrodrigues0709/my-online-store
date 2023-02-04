@@ -59,7 +59,7 @@ export class CheckoutComponent implements OnInit {
   
   createForm(): void {
     this.addressForm = this.formBuilder.group({
-      address: ['', Validators.required],
+      address: [0, Validators.required],
     });
     this.paymentForm = this.formBuilder.group({
       name: ['', Validators.required],

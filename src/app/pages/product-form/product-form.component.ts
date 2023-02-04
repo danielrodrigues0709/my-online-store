@@ -49,7 +49,7 @@ export class ProductFormComponent implements OnInit {
       price: ['', Validators.required],
       description: ['', Validators.required],
       image: [''],
-      category: ['', Validators.required],
+      category: ['jewelery', Validators.required],
     });
   }
 
